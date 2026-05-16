@@ -1,0 +1,4 @@
+# security: publish ONLY index.html
+*
+!index.html
+!.gitignore

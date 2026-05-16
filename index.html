@@ -1,0 +1,123 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#05060a">
+<title>Ryu | AIで&quot;稼ぐ仕組み&quot;を作る人</title>
+<meta name="description" content="AIで収益化する方法を毎日発信。noteでノウハウを公開しながら、自分でも商品を作って販売中。「AIで稼ぐ」も「AIで効率化する」も、ぜんぶ自由に働くための手段。時間も予算もない前提のリアルな話だけ。">
+<meta property="og:title" content="Ryu | AIで&quot;稼ぐ仕組み&quot;を作る人">
+<meta property="og:description" content="AIで収益化する方法を毎日発信。noteでノウハウを公開しながら、自分でも商品を作って販売中。「AIで稼ぐ」も「AIで効率化する」も、ぜんぶ自由に働くための手段。時間も予算もない前提のリアルな話だけ。">
+<meta property="og:type" content="profile">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --bg:#05060a;--bg2:#0a0d18;--card:rgba(255,255,255,.045);
+ --line:rgba(255,255,255,.09);--txt:#e8ecf6;--dim:#8b93ad;
+ --c1:#22d3ee;--c2:#7c3aed;--c3:#34d399}
+html,body{background:var(--bg);color:var(--txt);
+ font-family:'Segoe UI',-apple-system,'Hiragino Kaku Gothic ProN',
+ 'Noto Sans JP',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;overflow-x:hidden;position:relative;
+ padding:54px 18px 70px}
+.bg{position:fixed;inset:0;z-index:-2;
+ background:
+  radial-gradient(900px 600px at 80% -10%,rgba(124,58,237,.22),transparent 60%),
+  radial-gradient(800px 600px at 10% 8%,rgba(34,211,238,.16),transparent 55%),
+  linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.grid{position:fixed;inset:0;z-index:-1;opacity:.35;
+ background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+ background-size:46px 46px;
+ mask:radial-gradient(circle at 50% 28%,#000 0%,transparent 78%)}
+.wrap{max-width:540px;margin:0 auto;
+ animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1}}
+.term{font:600 12px/1 ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+ color:var(--c1);letter-spacing:.14em;text-transform:uppercase;
+ display:flex;align-items:center;gap:8px;justify-content:center;
+ margin-bottom:22px;opacity:.85}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--c3);
+ box-shadow:0 0 10px var(--c3);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.av{width:88px;height:88px;border-radius:24px;margin:0 auto 18px;
+ display:grid;place-items:center;font-size:34px;font-weight:800;
+ color:#04060c;background:linear-gradient(135deg,var(--c1),var(--c2));
+ box-shadow:0 0 0 1px rgba(255,255,255,.12),
+  0 18px 50px -12px rgba(124,58,237,.6);position:relative}
+.av::after{content:'';position:absolute;inset:-2px;border-radius:26px;
+ background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));
+ z-index:-1;filter:blur(14px);opacity:.55}
+h1{text-align:center;font-size:23px;font-weight:800;letter-spacing:.01em}
+.handle{text-align:center;font:600 12.5px/1 ui-monospace,Menlo,monospace;
+ color:var(--c1);margin:7px 0 14px;letter-spacing:.04em}
+.bio{text-align:center;color:var(--dim);font-size:13.5px;line-height:1.85;
+ max-width:430px;margin:0 auto 30px}
+.sec{font:700 11px/1 ui-monospace,Menlo,monospace;color:var(--dim);
+ text-transform:uppercase;letter-spacing:.22em;margin:28px 4px 12px;
+ display:flex;align-items:center;gap:12px}
+.sec::before{content:'';width:6px;height:6px;border-radius:50%;
+ background:linear-gradient(135deg,var(--c1),var(--c2))}
+.sec::after{content:'';flex:1;height:1px;
+ background:linear-gradient(90deg,var(--line),transparent)}
+a.card,div.card{display:flex;align-items:center;gap:15px;
+ padding:16px 18px;margin:10px 0;border-radius:16px;
+ background:var(--card);border:1px solid var(--line);
+ text-decoration:none;color:var(--txt);position:relative;
+ backdrop-filter:blur(10px);transition:.22s cubic-bezier(.2,.7,.2,1)}
+a.card:hover{transform:translateY(-2px);
+ border-color:rgba(34,211,238,.45);
+ background:rgba(255,255,255,.07);
+ box-shadow:0 14px 40px -16px rgba(34,211,238,.5)}
+a.card:active{transform:translateY(0)}
+.ic{width:42px;height:42px;flex:none;border-radius:12px;
+ display:grid;place-items:center;font-size:19px;
+ background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.tx{flex:1;min-width:0}
+.tt{font-size:14.5px;font-weight:700;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb{font-size:11.5px;color:var(--dim);margin-top:3px;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.go{color:var(--dim);font-size:15px;transition:.2s}
+a.card:hover .go{color:var(--c1);transform:translateX(3px)}
+.card.feat{border-color:transparent;
+ background:linear-gradient(var(--bg2),var(--bg2)) padding-box,
+  linear-gradient(135deg,var(--c1),var(--c2)) border-box;
+ box-shadow:0 0 32px -10px rgba(124,58,237,.55)}
+.card.feat .ic{background:linear-gradient(135deg,
+  rgba(34,211,238,.22),rgba(124,58,237,.22))}
+.card.soon{opacity:.5;cursor:not-allowed}
+.badge{font:700 9px/1 ui-monospace,monospace;letter-spacing:.12em;
+ padding:4px 7px;border-radius:6px;color:var(--c1);
+ border:1px solid rgba(34,211,238,.4);background:rgba(34,211,238,.08)}
+footer{text-align:center;color:var(--dim);font-size:10.5px;
+ margin-top:40px;font-family:ui-monospace,Menlo,monospace;
+ letter-spacing:.1em;opacity:.6}
+</style></head>
+<body><div class="bg"></div><div class="grid"></div>
+<main class="wrap">
+<div class="term"><span class="dot"></span>SYSTEM ONLINE / AI MONETIZATION</div>
+<div class="av">R</div>
+<h1>Ryu<span style="color:var(--c1)">|</span>AIで&quot;稼ぐ仕組み&quot;を作る人</h1>
+<div class="handle">@ai_ryu_fukugyo</div>
+<p class="bio">AIで収益化する方法を毎日発信。noteでノウハウを公開しながら、自分でも商品を作って販売中。「AIで稼ぐ」も「AIで効率化する」も、ぜんぶ自由に働くための手段。時間も予算もない前提のリアルな話だけ。</p>
+<div class="sec">START HERE</div>
+<div class="card soon"><div class="ic">🎁</div><div class="tx"><div class="tt">無料プレゼント</div><div class="sb">AIで売れる文章が作れる魔法のプロンプト集</div></div><span class="badge">準備中</span></div>
+<a class="card feat" href="https://lin.ee/TmFMCCf" target="_blank" rel="noopener noreferrer"><div class="ic">📩</div><div class="tx"><div class="tt">LINE公式</div><div class="sb">限定ノウハウと最新情報を配信</div></div><span class="go">&rsaquo;</span></a>
+<div class="sec">読む・学ぶ</div>
+<a class="card feat" href="https://note.com/ai_ryu_fukugyo/n/nb5778c4e7165" target="_blank" rel="noopener noreferrer"><div class="ic">📈</div><div class="tx"><div class="tt">note：3ヶ月で月5万円ロードマップ</div><div class="sb">0→1→3→5万を3ステップに分解</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://note.com/ai_ryu_fukugyo" target="_blank" rel="noopener noreferrer"><div class="ic">📝</div><div class="tx"><div class="tt">note プロフィール</div><div class="sb">AI収益化ノウハウの記事一覧</div></div><span class="go">&rsaquo;</span></a>
+<div class="sec">フォローする</div>
+<a class="card" href="https://x.com/ai_ryu_fukugyo" target="_blank" rel="noopener noreferrer"><div class="ic">𝕏</div><div class="tx"><div class="tt">X (旧Twitter)</div><div class="sb">AI収益化を毎日発信</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://www.youtube.com/@RyuAI%E5%89%AF%E6%A5%AD%E3%81%AE%E6%95%99%E7%A7%91%E6%9B%B8" target="_blank" rel="noopener noreferrer"><div class="ic">▶</div><div class="tx"><div class="tt">YouTube</div><div class="sb">AI活用を動画で解説</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://www.tiktok.com/@ryuryu_420" target="_blank" rel="noopener noreferrer"><div class="ic">🎵</div><div class="tx"><div class="tt">TikTok</div><div class="sb">ショート動画でAIノウハウ</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://www.instagram.com/ai_ryu_fukugyo/" target="_blank" rel="noopener noreferrer"><div class="ic">📷</div><div class="tx"><div class="tt">Instagram</div><div class="sb">ビジュアルでAI副業</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://www.threads.com/@ai_ryu_fukugyo" target="_blank" rel="noopener noreferrer"><div class="ic">🧵</div><div class="tx"><div class="tt">Threads</div><div class="sb">テキストで思考を発信</div></div><span class="go">&rsaquo;</span></a>
+<div class="sec">すぐ外注したい人へ（ココナラ）</div>
+<a class="card" href="https://coconala.com/services/4211744" target="_blank" rel="noopener noreferrer"><div class="ic">⭐</div><div class="tx"><div class="tt">AIで売れる商品紹介文・キャッチコピー作成</div><div class="sb">¥1,500</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://coconala.com/services/4211728" target="_blank" rel="noopener noreferrer"><div class="ic">✍</div><div class="tx"><div class="tt">プロフィール文・自己紹介作成</div><div class="sb">¥1,500</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://coconala.com/services/4201229" target="_blank" rel="noopener noreferrer"><div class="ic">📣</div><div class="tx"><div class="tt">Instagram投稿文10本作成</div><div class="sb">¥3,000・★5評価</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://coconala.com/services/4210273" target="_blank" rel="noopener noreferrer"><div class="ic">🐦</div><div class="tx"><div class="tt">X投稿20本作成</div><div class="sb">¥1,500</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://coconala.com/services/4211292" target="_blank" rel="noopener noreferrer"><div class="ic">🤖</div><div class="tx"><div class="tt">AIプロンプト代行</div><div class="sb">¥2,000</div></div><span class="go">&rsaquo;</span></a>
+<a class="card" href="https://coconala.com/users/1180797" target="_blank" rel="noopener noreferrer"><div class="ic">👤</div><div class="tx"><div class="tt">ココナラ プロフィール（全サービス）</div><div class="sb">Ryu｜SNS投稿代行</div></div><span class="go">&rsaquo;</span></a>
+<footer>// built &amp; deployed by automated pipeline</footer>
+</main></body></html>

@@ -11,7 +11,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
- --bg:#05060a;--bg2:#0a0d18;--card:rgba(255,255,255,.045);
+ --bg:#05080f;--bg2:#090d1e;--card:rgba(255,255,255,.045);
  --line:rgba(255,255,255,.09);--txt:#e8ecf6;--dim:#8b93ad;
  --c1:#22d3ee;--c2:#7c3aed;--c3:#34d399}
 html,body{background:var(--bg);color:var(--txt);
@@ -21,14 +21,18 @@ body{min-height:100vh;overflow-x:hidden;position:relative;
  padding:54px 18px 70px}
 .bg{position:fixed;inset:0;z-index:-2;
  background:
-  radial-gradient(900px 600px at 80% -10%,rgba(124,58,237,.22),transparent 60%),
-  radial-gradient(800px 600px at 10% 8%,rgba(34,211,238,.16),transparent 55%),
-  linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
-.grid{position:fixed;inset:0;z-index:-1;opacity:.35;
- background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
- background-size:46px 46px;
- mask:radial-gradient(circle at 50% 28%,#000 0%,transparent 78%)}
+  radial-gradient(ellipse 800px 500px at 75% 5%,rgba(42,31,143,.5),transparent 55%),
+  radial-gradient(ellipse 600px 700px at 5% 60%,rgba(13,27,94,.65),transparent 50%),
+  radial-gradient(ellipse 700px 400px at 50% 100%,rgba(124,58,237,.35),transparent 60%),
+  radial-gradient(ellipse 900px 600px at 90% 80%,rgba(96,165,250,.12),transparent 55%),
+  linear-gradient(160deg,#05080f 0%,#090d1e 50%,#0d1231 100%)}
+.grid{position:fixed;inset:0;z-index:-1;opacity:.28;
+ background-image:
+  linear-gradient(rgba(96,165,250,.06) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(96,165,250,.06) 1px,transparent 1px),
+  radial-gradient(circle 1.5px at center,rgba(167,139,250,.5) 0%,transparent 100%);
+ background-size:46px 46px,46px 46px,46px 46px;
+ mask:radial-gradient(ellipse 90% 80% at 50% 30%,#000 0%,transparent 85%)}
 .wrap{max-width:540px;margin:0 auto;
  animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1}}

@@ -1,14 +1,14 @@
 # security: linkpage core publishes ONLY index.html at root.
-# Subdirs like vip-download/ and note-lp-*/ are managed manually
-# (handled outside linkpage.py build/guard flow).
+# Subdirs below are managed manually outside the linkpage flow
+# (their contents are still scanned for secret patterns by guard).
 *
 !index.html
 !.gitignore
-!vip-download/
-!vip-download/**
+!note-lp-edu/
+!note-lp-edu/**
 !note-lp-sales/
 !note-lp-sales/**
 !note-lp-simple/
 !note-lp-simple/**
-!note-lp-edu/
-!note-lp-edu/**
+!vip-download/
+!vip-download/**

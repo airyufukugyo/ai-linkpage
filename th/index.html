@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Threads 認証コード</title>
+<style>
+  :root{color-scheme:light dark}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+       margin:0;padding:24px;line-height:1.6;background:#0f1320;color:#e8ecf4}
+  .card{max-width:680px;margin:6vh auto;background:#171c2e;border:1px solid #2a3350;
+        border-radius:14px;padding:24px 22px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  h1{font-size:18px;margin:0 0 14px}
+  .code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;
+        word-break:break-all;background:#0f1320;border:1px solid #2a3350;border-radius:10px;
+        padding:14px;margin:10px 0}
+  button{appearance:none;border:0;border-radius:10px;padding:12px 18px;font-size:15px;
+         font-weight:600;background:#4f7cff;color:#fff;cursor:pointer}
+  button:active{transform:translateY(1px)}
+  .ok{color:#5fd38a}.muted{color:#9aa6c4;font-size:13px}
+  .err{color:#ff8a8a}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Threads 認証コード</h1>
+    <p class="muted">下のコードをコピーして、Claudeに貼り付けてください。</p>
+    <div id="code" class="code">読み取り中…</div>
+    <button id="copy">コピー</button>
+    <span id="status" class="muted"></span>
+  </div>
+<script>
+(function(){
+  var p = new URLSearchParams(location.search);
+  var code = p.get("code");
+  var box = document.getElementById("code");
+  var btn = document.getElementById("copy");
+  var st  = document.getElementById("status");
+  if(code){
+    box.textContent = code;
+  }else{
+    box.textContent = "code が見つかりません。許可からやり直してください。";
+    box.className = "code err";
+    btn.disabled = true;
+  }
+  btn.addEventListener("click", function(){
+    navigator.clipboard.writeText(code).then(function(){
+      st.textContent = "コピーしました ✓"; st.className = "ok muted";
+    }, function(){
+      st.textContent = "手動で長押しコピーしてください"; st.className = "muted";
+    });
+  });
+})();
+</script>
+</body>
+</html>

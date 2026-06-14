@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ryu｜AI業務自動化｜中小企業のくり返し業務をAIで自動化する仕組みを構築</title>
+<meta name="description" content="中小企業や個人事業のくり返し業務を、AIで自動化する仕組みを構築します。ブログ自動更新・問い合わせ返信・社内文書・リサーチ・SNS運用の自動化と、導入後の顧問保守まで対応。自社で同等の自動化を毎日運用しています。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Ryu｜AI業務自動化">
+<meta property="og:description" content="中小企業のくり返し業務をAIで自動化する仕組みを構築します。動く実物を毎日運用しています。">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --navy:#0B1F3A;--navy2:#122A4A;--ink:#16213a;--ink2:#3a4663;--muted:#69748c;
+ --blue:#3B82F6;--teal:#2EC5E0;--bg:#f7f9fc;--card:#ffffff;--line:#e4e9f2;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:-apple-system,'Hiragino Kaku Gothic ProN','Yu Gothic','Meiryo','Segoe UI','Noto Sans JP',sans-serif;
+ line-height:1.85;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+strong{font-weight:700}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(11,31,58,0.96);backdrop-filter:blur(6px);
+ border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:920px;margin:0 auto;padding:0 22px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1.02rem;letter-spacing:.02em}
+.brand .mk{width:30px;height:30px;flex:0 0 30px}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a{color:#cdd7ea;font-size:.92rem}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff!important;
+ padding:9px 18px;border-radius:7px;font-weight:700;font-size:.9rem}
+@media(max-width:680px){.nav-links a:not(.nav-cta){display:none}}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:74px 0 86px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:520px;height:520px;
+ background:radial-gradient(circle,rgba(46,197,224,0.18),transparent 62%);pointer-events:none}
+.eyebrow{display:inline-block;font-size:.82rem;letter-spacing:.14em;color:var(--teal);
+ border:1px solid rgba(46,197,224,0.4);border-radius:40px;padding:6px 15px;margin-bottom:22px}
+.hero h1{font-size:2.35rem;line-height:1.45;font-weight:800;margin-bottom:20px;letter-spacing:.01em}
+.hero h1 .hl{background:linear-gradient(transparent 62%,rgba(59,130,246,0.55) 62%)}
+.hero p.lead{font-size:1.08rem;color:#cdd7ea;max-width:660px;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:15px 30px;border-radius:9px;font-weight:700;font-size:1rem;transition:.18s;cursor:pointer}
+.btn-main{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(46,197,224,.3)}
+.btn-ghost{border:1px solid rgba(255,255,255,.32);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.hero-trust{margin-top:30px;font-size:.9rem;color:#9fb0cc}
+
+/* sections */
+section{padding:64px 0}
+.sec-head{text-align:center;margin-bottom:42px}
+.sec-head .k{font-size:.8rem;letter-spacing:.16em;color:var(--blue);font-weight:700}
+.sec-head h2{font-size:1.7rem;margin-top:8px;color:var(--navy)}
+.sec-head p{color:var(--muted);margin-top:12px}
+
+/* problem */
+.prob{background:#fff}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prob-grid .c{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:22px}
+.prob-grid .c b{color:var(--navy)}
+@media(max-width:680px){.prob-grid{grid-template-columns:1fr}}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:680px){.svc-grid{grid-template-columns:1fr}}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;
+ transition:.18s;position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;
+ background:linear-gradient(90deg,var(--blue),var(--teal))}
+.svc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(11,31,58,.1)}
+.svc .tag{font-size:.78rem;font-weight:700;color:var(--blue);letter-spacing:.05em}
+.svc h3{font-size:1.18rem;color:var(--navy);margin:8px 0 12px}
+.svc p{color:var(--ink2);font-size:.96rem}
+.svc .proof{margin-top:14px;font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+.svc .proof b{color:var(--navy)}
+
+/* pricing */
+.price{background:#fff}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
+thead th{background:var(--navy);color:#fff;font-weight:700;font-size:.92rem}
+tbody tr:last-child td{border-bottom:none}
+td .pr{font-weight:800;color:var(--navy);font-size:1.05rem;white-space:nowrap}
+.opt{margin-top:22px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.opt b{color:var(--navy)}
+.monitor{margin-top:22px;background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;border-radius:14px;padding:26px}
+.monitor h3{color:#fff;font-size:1.2rem;margin-bottom:8px}
+.monitor .big{color:var(--teal);font-weight:800;font-size:1.15rem}
+.monitor ul{margin:14px 0 0 20px;color:#cdd7ea;font-size:.92rem}
+.monitor ul li{margin:6px 0}
+.monitor .fine{margin-top:14px;font-size:.82rem;color:#9fb0cc}
+
+/* reasons */
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:680px){.reasons{grid-template-columns:1fr}}
+.reason{text-align:center;padding:24px}
+.reason .num{width:48px;height:48px;margin:0 auto 14px;border-radius:50%;
+ background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.reason h3{color:var(--navy);font-size:1.08rem;margin-bottom:8px}
+.reason p{color:var(--ink2);font-size:.94rem}
+
+/* flow */
+.flow{background:#fff}
+.steps{counter-reset:s;max-width:660px;margin:0 auto}
+.step{position:relative;padding:0 0 26px 56px;border-left:2px solid var(--line);margin-left:18px}
+.step:last-child{border-left-color:transparent}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:-19px;top:-2px;
+ width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;
+ display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem}
+.step h3{color:var(--navy);font-size:1.05rem;margin-bottom:4px}
+.step p{color:var(--ink2);font-size:.94rem}
+
+/* faq */
+.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.faq summary{padding:18px 20px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;color:var(--blue);font-weight:700;font-size:1.2rem}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 20px 18px;color:var(--ink2);font-size:.95rem}
+
+/* contact */
+.contact{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;text-align:center}
+.contact h2{color:#fff;font-size:1.7rem}
+.contact p{color:#cdd7ea;max-width:580px;margin:14px auto 28px}
+.note{font-size:.85rem;color:#9fb0cc;margin-top:18px}
+
+/* footer */
+footer{background:#08182d;color:#8294b0;font-size:.85rem;padding:34px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot a{color:#aebfd8}
+.foot .biz{font-size:.8rem;line-height:1.7}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="nav">
+  <div class="brand">
+   <svg class="mk" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+     <stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#2EC5E0"/></linearGradient></defs>
+    <circle cx="50" cy="50" r="46" stroke="url(#g)" stroke-width="6" fill="none" stroke-dasharray="220 70" stroke-linecap="round"/>
+    <text x="50" y="66" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="48" fill="#fff">R</text>
+   </svg>
+   <span>Ryu｜AI業務自動化</span>
+  </div>
+  <nav class="nav-links">
+   <a href="#services">サービス</a>
+   <a href="#price">料金</a>
+   <a href="#flow">ご依頼の流れ</a>
+   <a href="#contact" class="nav-cta">相談する</a>
+  </nav>
+ </div>
+</header>
+
+<section class="hero">
+ <div class="wrap">
+  <span class="eyebrow">AI BUSINESS AUTOMATION</span>
+  <h1>毎日くり返している作業を、<br><span class="hl">AIで自動化する仕組み</span>に変えます。</h1>
+  <p class="lead">中小企業や個人事業のくり返し業務を、AIで自動化する仕組みを構築します。ブログの自動更新、問い合わせ返信、社内文書、リサーチ、SNS運用まで。私自身のメディアは記事が毎朝自動で公開され、SNSや情報収集も自動で動いています。同じ仕組みを、御社の業務に合わせて設計・構築します。</p>
+  <div class="hero-cta">
+   <a href="#contact" class="btn btn-main">無料で相談する</a>
+   <a href="#services" class="btn btn-ghost">サービスを見る</a>
+  </div>
+  <div class="hero-trust">動く実物を自社で毎日運用｜操作手順書つきで納品（コード不要で運用可）｜NDA対応</div>
+ </div>
+</section>
+
+<section class="prob">
+ <div class="wrap">
+  <div class="sec-head">
+   <div class="k">SUCH PROBLEMS</div>
+   <h2>こんな状態を、仕組みで解決します</h2>
+   <p>手で繰り返している工程は、たいてい自動化で外せます。まず一緒に切り分けます。</p>
+  </div>
+  <div class="prob-grid">
+   <div class="c"><b>更新が止まっている</b><br>ブログやSNSの更新が続かない。外注は高い・遅い。</div>
+   <div class="c"><b>同じ作業のくり返し</b><br>返信・見積・日報・調べものに毎日時間を取られている。</div>
+   <div class="c"><b>何から手を付けるか分からない</b><br>AIを入れたいが、進め方も使いこなし方も分からない。</div>
+  </div>
+ </div>
+</section>
+
+<section id="services">
+ <div class="wrap">
+  <div class="sec-head">
+   <div class="k">SERVICES</div>
+   <h2>5つの自動化サービス</h2>
+   <p>それぞれに、自社で毎日動かしている実物があります。動く形でご説明できます。</p>
+  </div>
+  <div class="svc-grid">
+   <div class="svc">
+    <div class="tag">P0｜SNS運用自動化</div>
+    <h3>SNSの投稿・ネタ集め・予約を自動化</h3>
+    <p>X・Threadsの投稿生成、ネタ集め、予約投稿の仕組みを構築します。手が止まりがちなSNS運用を、回り続ける状態にします。</p>
+    <div class="proof"><b>動く実物</b>：自社のSNSを毎日自動で投稿・運用中</div>
+   </div>
+   <div class="svc">
+    <div class="tag">P1｜ブログ/SEO記事 量産自動化</div>
+    <h3>記事が毎日増えるブログに変える</h3>
+    <p>キーワード設計からAI執筆、アイキャッチ生成、WordPressへの自動投稿まで。更新が止まったブログを、自動更新に変えます。</p>
+    <div class="proof"><b>動く実物</b>：自社メディアは毎朝9時に記事を自動公開</div>
+   </div>
+   <div class="svc">
+    <div class="tag">P2｜問い合わせ/文書 AI自動化</div>
+    <h3>返信・見積・日報の下書きを自動生成</h3>
+    <p>毎日の返信や見積もり、日報、議事録の下書きをAIで自動生成します。ゼロから書く時間を、確認して直すだけの時間に変えます。</p>
+    <div class="proof"><b>動く実物</b>：日次まとめ・返信下書きを自社で自動生成</div>
+   </div>
+   <div class="svc">
+    <div class="tag">P3｜リサーチ/競合調査 自動化</div>
+    <h3>調べものを自動で集めてAIが要約</h3>
+    <p>市場・競合・口コミの収集を自動化し、AIが要約レポートにまとめます。毎週かかっていた調査を、読むだけの時間に変えます。</p>
+    <div class="proof"><b>動く実物</b>：市場・トレンドを毎日自動収集→統計で蒸留</div>
+   </div>
+   <div class="svc">
+    <div class="tag">P4｜AI導入 顧問・月額保守</div>
+    <h3>作って終わりにしない、月額の並走</h3>
+    <p>何から自動化すべきか、入れたものが使われているか。AI業務自動化の相談相手として、月額で並走します。小さな改修・保守まで。</p>
+    <div class="proof"><b>動く実物</b>：複数の自動化を毎日運用し、改善ループを継続</div>
+   </div>
+   <div class="svc">
+    <div class="tag">まずは</div>
+    <h3>どれが合うか分からない方へ</h3>
+    <p>現状と目的をお聞かせいただければ、外せる工程を一緒に切り分け、無理のないプランをご提案します。お見積りは無料です。</p>
+    <div class="proof"><a href="#contact"><b>無料で相談する →</b></a></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="price" class="price">
+ <div class="wrap">
+  <div class="sec-head">
+   <div class="k">PRICING</div>
+   <h2>料金プラン</h2>
+   <p>構築型は3階層。顧問・保守は月額です。価格・納期は明朗にお出しします。</p>
+  </div>
+  <table>
+   <thead><tr><th>プラン</th><th>価格</th><th>納期</th><th>内容</th></tr></thead>
+   <tbody>
+    <tr><td>ライト</td><td class="pr">¥50,000</td><td>14日</td><td>自動化する工程を1つに絞って構築。まず1工程を動く形に。</td></tr>
+    <tr><td>スタンダード</td><td class="pr">¥100,000</td><td>14日</td><td>＋AIによる文章生成・品質チェック、収集・整形の自動化。複数工程を運用に乗せる。</td></tr>
+    <tr><td>フル</td><td class="pr">¥150,000</td><td>21日</td><td>＋実行結果の計測と、納品後1ヶ月のサポート。運用しながら改善まで。</td></tr>
+   </tbody>
+  </table>
+  <div class="opt">
+   <b>有料オプション</b><br>
+   運用保守サポート 月額 ¥20,000／連携先・対応媒体の追加 1件 ¥30,000／お急ぎ対応（納期短縮） ¥20,000<br>
+   <b>顧問・月額保守</b>：スポット設計 ¥60,000／顧問ベーシック 月¥20,000／顧問スタンダード 月¥50,000
+  </div>
+  <div class="monitor">
+   <h3>モニター特価 2社限定枠</h3>
+   <p>実績を一緒に作ってくださる<strong>2社限定</strong>で、スタンダード相当の構築を <span class="big">モニター特価 ¥30,000</span>（通常¥100,000）でお引き受けします。次の条件にすべて同意いただける方が対象です。</p>
+   <ul>
+    <li>今月中に着手し、ヒアリングと中間レビューに対応いただける</li>
+    <li>導入前後の作業時間・件数などの数値を共有いただける（事例化のため）</li>
+    <li>導入事例・推薦コメントの掲載に同意いただける（社名は伏せても可）</li>
+    <li>率直なご感想・改善点のフィードバックをいただける</li>
+   </ul>
+   <div class="fine">モニター特価の範囲はスタンダード相当の構築までです。媒体・連携先の追加や納品後の保守は通常オプション料金となります。必ず成果が出るといった保証はしておりません。</div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="sec-head">
+   <div class="k">WHY US</div>
+   <h2>選ばれる理由</h2>
+  </div>
+  <div class="reasons">
+   <div class="reason">
+    <div class="num">1</div>
+    <h3>動く実物を毎日運用</h3>
+    <p>同等の自動化を自社で毎日動かしています。机上の提案ではなく、動く実物をお見せしながらご説明できます。</p>
+   </div>
+   <div class="reason">
+    <div class="num">2</div>
+    <h3>伝わる文章まで設計</h3>
+    <p>前職は営業です。ただ自動化するだけでなく、伝わる文章や運用の流れまで含めてご提案します。</p>
+   </div>
+   <div class="reason">
+    <div class="num">3</div>
+    <h3>コード不要で運用</h3>
+    <p>操作手順書つきで納品し、コードを書けない方でも運用できる形でお渡しします。受け取ったその日から始められます。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="flow" class="flow">
+ <div class="wrap">
+  <div class="sec-head">
+   <div class="k">FLOW</div>
+   <h2>ご依頼の流れ</h2>
+  </div>
+  <div class="steps">
+   <div class="step"><h3>ヒアリング</h3><p>いまの作業・目的・使っているツールをお聞かせください。</p></div>
+   <div class="step"><h3>切り分けとお見積り</h3><p>自動化で外せる工程を切り分け、設計とお見積りを確定します。</p></div>
+   <div class="step"><h3>構築</h3><p>御社の業務に合わせて自動化の仕組みを構築します。</p></div>
+   <div class="step"><h3>納品・操作説明</h3><p>操作手順書つきで、コードを書かずに運用できる形でお渡しします。</p></div>
+   <div class="step"><h3>運用保守（ご希望の方）</h3><p>運用に乗るまで、月額の保守・顧問で並走します。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="faq">
+ <div class="wrap">
+  <div class="sec-head">
+   <div class="k">FAQ</div>
+   <h2>よくある質問</h2>
+  </div>
+  <details><summary>プログラミングの知識がなくても運用できますか</summary><div class="a">はい。納品時に操作手順をお渡しし、コードを書かずに運用できる形で構築します。難しい設定は構築側で済ませてお渡しします。</div></details>
+  <details><summary>納品後、自社だけで運用を続けられますか</summary><div class="a">はい。操作説明をお付けします。ご不安な場合は運用保守（月額の有料オプション）で継続的にサポートします。</div></details>
+  <details><summary>別途かかる費用はありますか</summary><div class="a">利用するAIや各種APIの利用条件・費用は、依頼者様の環境に準じます。必要な費用や制約はヒアリングでご説明し、無理のない構成をご提案します。</div></details>
+  <details><summary>セキュリティや秘密保持は大丈夫ですか</summary><div class="a">NDA（秘密保持契約）に対応します。お預かりした情報を目的外に使用することはありません。</div></details>
+  <details><summary>必ず成果が出るといった保証はありますか</summary><div class="a">成果の保証はしておりません。くり返し作業を自動化する仕組みの提供です。日々の作業時間を確実に減らす仕組みをお届けします。</div></details>
+  <details><summary>まず相談だけでも可能ですか</summary><div class="a">はい。現状と目的をお聞かせいただければ、最適なプランをご提案します。お見積りはお気軽にどうぞ。</div></details>
+ </div>
+</section>
+
+<section id="contact" class="contact">
+ <div class="wrap">
+  <h2>まずは無料でご相談ください</h2>
+  <p>現在の業務内容と目的をお聞かせいただければ、外せる工程を切り分け、無理のないプランとお見積りをご提案します。売り込みはいたしません。</p>
+  <a href="mailto:ryu.automation.ai@gmail.com?subject=AI業務自動化のご相談" class="btn btn-main">メールで相談する</a>
+  <div class="note">成果を保証するものではありません。くり返し作業を自動化する仕組みの提供です。</div>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap foot">
+  <div class="biz">
+   <strong style="color:#cfd9ec">Ryu｜AI業務自動化</strong><br>
+   AI業務自動化の構築・顧問サービス<br>
+   お問い合わせ：<a href="mailto:ryu.automation.ai@gmail.com">ryu.automation.ai@gmail.com</a>
+  </div>
+  <div>
+   <a href="privacy.html">プライバシーポリシー</a><br>
+   <span style="font-size:.78rem">© 2026 Ryu｜AI業務自動化</span>
+  </div>
+ </div>
+</footer>
+
+</body>
+</html>

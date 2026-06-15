@@ -4,6 +4,8 @@
 *
 !index.html
 !.gitignore
+!b2b-home/
+!b2b-home/**
 !mid-tier-lp/
 !mid-tier-lp/**
 !note-lp-edu/
@@ -20,5 +22,3 @@
 !vip-download/**
 !vip-tools/
 !vip-tools/**
-!b2b-home/
-!b2b-home/**

@@ -1,0 +1,213 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DAY 1 AIで現在地を見える化する | ReLoop Starter</title><style>/* === ReLoop Starter — standalone (GitHub Pages) === */
+html, body { margin: 0; padding: 0; background: #F5F7FA; }
+.rlst {
+  --navy: #0B1F3A; --teal: #0FB5A6; --gold: #E0A82E;
+  --off: #F5F7FA; --ink: #1F2937; --white: #FFFFFF;
+  box-sizing: border-box; color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.85; -webkit-text-size-adjust: 100%;
+  max-width: 640px; margin: 0 auto; padding: 0 16px 64px;
+  font-size: 16.5px;
+}
+.rlst *, .rlst *::before, .rlst *::after { box-sizing: border-box; }
+.rlst p { margin: 0 0 14px; }
+.rlst strong { color: var(--navy); }
+
+/* ヘッダー */
+.rlst-hero { background: var(--navy); color: var(--white); border-radius: 16px; padding: 26px 20px 22px; margin: 18px 0 26px; }
+.rlst-badge { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--gold); border: 1px solid rgba(224,168,46,.6); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
+.rlst-hero h1 { font-size: 23px; line-height: 1.5; margin: 0 0 12px; color: var(--white); font-weight: 800; }
+.rlst-hero .lead { font-size: 15.5px; color: #D6DEEA; margin: 0; line-height: 1.85; }
+.rlst-progress { margin-top: 20px; }
+.rlst-progress .pmeta { display: flex; justify-content: space-between; font-size: 12.5px; color: #AFBCCE; margin-bottom: 6px; }
+.rlst-progress .ptrack { height: 8px; background: rgba(255,255,255,.14); border-radius: 999px; overflow: hidden; }
+.rlst-progress .pfill { height: 100%; background: var(--teal); border-radius: 999px; }
+
+/* セクション見出し */
+.rlst-sec { margin: 34px 0 0; }
+.rlst-sec > h2 { font-size: 19px; font-weight: 800; color: var(--navy); margin: 0 0 14px; padding-left: 12px; border-left: 4px solid var(--teal); line-height: 1.4; }
+.rlst-note { font-size: 14px; color: #5b6573; margin-top: 10px; }
+
+/* ステップカード */
+.rlst-steps { list-style: none; padding: 0; margin: 0; counter-reset: st; }
+.rlst-steps li { counter-increment: st; background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 16px 16px 16px 56px; margin: 0 0 12px; position: relative; font-weight: 600; }
+.rlst-steps li::before { content: counter(st); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; }
+
+/* プロンプト */
+.rlst-prompt { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; overflow: hidden; }
+.rlst-prompt .bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #F0F3F8; padding: 10px 14px; border-bottom: 1px solid #E4E9F0; }
+.rlst-prompt .bar span { font-size: 13px; font-weight: 700; color: var(--navy); }
+.rlst-copy { -webkit-appearance: none; appearance: none; border: 0; background: var(--teal); color: #fff; font-weight: 700; font-size: 14px; padding: 9px 16px; border-radius: 999px; cursor: pointer; min-height: 38px; }
+.rlst-copy:active { transform: translateY(1px); }
+.rlst-copy.done { background: var(--navy); }
+.rlst-prompt pre { margin: 0; padding: 16px; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; font-size: 14.5px; line-height: 1.8; color: var(--ink); background: var(--white); font-family: inherit; }
+.rlst-prompt .hint { margin: 0; padding: 0 16px 14px; font-size: 12.5px; color: #8a93a0; }
+.rlst-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* keep / drop */
+.rlst-kd { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.rlst-kd .col { border-radius: 12px; padding: 14px 16px; }
+.rlst-kd .keep { background: #E7F6F4; border: 1px solid #BCE6E0; }
+.rlst-kd .drop { background: #F1F3F6; border: 1px solid #DDE2E9; }
+.rlst-kd h3 { font-size: 15px; margin: 0 0 10px; font-weight: 800; }
+.rlst-kd .keep h3 { color: #0a8c80; }
+.rlst-kd .drop h3 { color: #6b7480; }
+.rlst-kd ul { list-style: none; padding: 0; margin: 0; }
+.rlst-kd li { position: relative; padding-left: 26px; margin: 0 0 8px; font-size: 15px; line-height: 1.7; }
+.rlst-kd li:last-child { margin-bottom: 0; }
+.rlst-kd .keep li::before { content: "✓"; position: absolute; left: 0; top: 0; color: #0fae9f; font-weight: 800; }
+.rlst-kd .drop li { color: #6b7480; }
+.rlst-kd .drop li::before { content: "×"; position: absolute; left: 2px; top: 0; color: #9aa3af; font-weight: 800; }
+
+/* チェックリスト */
+.rlst-check { list-style: none; padding: 0; margin: 0; }
+.rlst-check li { position: relative; padding: 12px 12px 12px 44px; background: var(--white); border: 1px solid #E4E9F0; border-radius: 10px; margin: 0 0 10px; font-weight: 600; }
+.rlst-check li::before { content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border: 2px solid var(--teal); border-radius: 5px; }
+
+/* 完成例カード */
+.rlst-example { background: #FBF6EA; border: 1px solid #EBD9A8; border-radius: 14px; padding: 18px; }
+.rlst-example h3 { font-size: 14px; color: #9a7b1e; margin: 0 0 4px; font-weight: 800; letter-spacing: .04em; }
+.rlst-example .row { margin: 12px 0 0; }
+.rlst-example .k { font-size: 13px; color: #8a7224; font-weight: 700; margin: 0 0 4px; }
+.rlst-example ol { margin: 0; padding-left: 20px; }
+.rlst-example ol li { margin: 0 0 8px; font-weight: 600; }
+.rlst-example ol li .r { display: block; font-weight: 600; font-size: 13px; color: var(--teal); margin-top: 2px; }
+.rlst-example .pill { display: inline-block; background: #fff; border: 1px solid #EBD9A8; color: var(--navy); font-weight: 700; border-radius: 999px; padding: 5px 14px; }
+
+/* シンプル箇条書き */
+.rlst-list { list-style: none; padding: 0; margin: 0; }
+.rlst-list li { position: relative; padding-left: 20px; margin: 0 0 10px; }
+.rlst-list li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+
+/* 実践記録 CTA */
+.rlst-record { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 18px; }
+.rlst-record .fields { list-style: none; padding: 0; margin: 0 0 18px; }
+.rlst-record .fields li { font-size: 14.5px; color: #4b5563; padding: 7px 0; border-bottom: 1px dashed #E4E9F0; }
+.rlst-record .fields li:last-child { border-bottom: 0; }
+.rlst-cta { display: block; text-align: center; background: var(--teal); color: #fff !important; text-decoration: none; font-weight: 800; font-size: 17px; padding: 17px 20px; border-radius: 12px; box-shadow: 0 6px 16px rgba(15,181,166,.28); min-height: 56px; }
+.rlst-cta:active { transform: translateY(1px); }
+
+/* 明日 */
+.rlst-tomorrow { background: #EEF2F8; border-radius: 14px; padding: 18px; margin-top: 34px; }
+.rlst-tomorrow .lbl { font-size: 13px; font-weight: 800; color: var(--teal); letter-spacing: .04em; margin: 0 0 8px; }
+.rlst-tomorrow p { margin: 0; }
+.rlst-tomorrow .line { font-size: 14px; color: #5b6573; margin-top: 10px; }
+
+@media (min-width: 600px) {
+  .rlst-kd { grid-template-columns: 1fr 1fr; }
+}</style></head><body><div class="rlst">
+
+  <header class="rlst-hero">
+    <span class="rlst-badge">DAY 1 / 14</span>
+    <h1>AIで現在地を見える化する</h1>
+    <p class="lead">今の自分が持っている経験、能力、使える時間を整理し、14日間で作れそうな成果物候補を3つ出します。</p>
+    <div class="rlst-progress">
+      <div class="pmeta"><span>進捗</span><span>1 / 14</span></div>
+      <div class="ptrack"><div class="pfill" style="width:7.14%"></div></div>
+    </div>
+  </header>
+
+  <section class="rlst-sec">
+    <h2>今日やること</h2>
+    <ol class="rlst-steps"><li>下のプロンプトをAIへ貼る</li><li>AIからの質問へ答える</li><li>成果物候補を3つ保存する</li></ol>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>AIに貼るプロンプト</h2>
+    <div class="rlst-prompt">
+      <div class="bar"><span>このまま貼ってください</span>
+        <button type="button" class="rlst-copy" id="rlst-copy" aria-controls="rlst-prompt-text">コピー</button>
+      </div>
+      <pre id="rlst-prompt-text">あなたは、初心者の経験や能力を、小さな成果物へ変える伴走者です。
+
+私が14日間で完成させられる成果物候補を3つ提案してください。
+
+成果物は次のどれかに分類してください。
+
+1. 発信ルート
+2. 提供物ルート
+3. 仕事ルート
+
+提案前に、次の内容を1問ずつ質問してください。
+
+・これまで経験した仕事
+・人から頼られたこと
+・過去に困って解決したこと
+・興味があるテーマ
+・1日に使える時間
+・使用できるAIやツール
+・人へ見せられる範囲
+
+質問が終わったら、各候補について次を出してください。
+
+・成果物名
+・ルート
+・誰に役立つか
+・14日間で作れる理由
+・20分版で今日やること
+・難易度
+・最初の一歩
+
+専門用語を使わず、初心者でも理解できる言葉で回答してください。</pre>
+      <p class="hint">コピーが効かない端末では、上の本文を長押しして全選択してください。</p>
+    </div>
+    <p class="rlst-live" id="rlst-copy-live" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>AIの回答を確認する</h2>
+    <div class="rlst-kd">
+      <div class="col keep"><h3>残す候補</h3><ul><li>14日以内で完成できる</li><li>1日20分でも進められる</li><li>自分の経験や興味を使える</li><li>誰か一人へ見せられる</li><li>完璧でなくても形にできる</li></ul></div>
+      <div class="col drop"><h3>外す候補</h3><ul><li>大規模なアプリ開発</li><li>何十ページもある教材</li><li>専門資格が必要</li><li>高額なツールが必要</li><li>売上が出なければ完成しないもの</li></ul></div>
+    </div>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>今日の完成物</h2>
+    <ul class="rlst-check"><li>成果物候補3つ</li><li>1日に使える時間</li><li>気になるルート</li></ul>
+    <p class="rlst-note">今日は最終決定しなくて大丈夫です。</p>
+  </section>
+
+  <section class="rlst-sec">
+    <div class="rlst-example">
+  <h3>完成例</h3>
+  <div class="row"><div class="k">使える時間</div><div>平日20分、休日60分</div></div>
+  <div class="row"><div class="k">成果物候補</div><ol><li>初心者向けChatGPT質問テンプレ<span class="r">提供物ルート</span></li><li>AIを使って仕事を効率化した体験投稿<span class="r">発信ルート</span></li><li>個人事業主向けSNS投稿サンプル<span class="r">仕事ルート</span></li></ol></div>
+  <div class="row"><div class="k">気になるルート</div><span class="pill">提供物ルート</span></div>
+</div>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>20分版</h2>
+    <ul class="rlst-list"><li>AIの質問へ短く答える</li><li>成果物候補を3つ出す</li><li>一番気になる候補へ印を付ける</li></ul>
+    <p class="rlst-note">深く考えすぎなくて大丈夫です。</p>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>発展版</h2>
+    <p>成果物候補を一人へ見せて、<strong>どれが一番役立ちそうか</strong>だけ聞いてください。</p>
+    <p class="rlst-note">この時点で販売する必要はありません。</p>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>詰まった時</h2>
+    <p>経験がないと思う場合は、次も材料になります。</p>
+    <ul class="rlst-list"><li>最近調べたこと</li><li>他人より少し詳しいこと</li><li>自分が困って検索したこと</li><li>過去に失敗したこと</li></ul>
+    <p class="rlst-note">すごい実績は必要ありません。</p>
+  </section>
+
+  <section class="rlst-sec">
+    <h2>今日の実践記録</h2>
+    <div class="rlst-record">
+      <ul class="fields"><li>使える時間</li><li>成果物候補1</li><li>成果物候補2</li><li>成果物候補3</li><li>気になるルート</li><li>今日やって気づいたこと</li><li>実践時間</li></ul>
+      <a class="rlst-cta" href="#">今日の実践記録を残す</a>
+    </div>
+  </section>
+
+  <section class="rlst-tomorrow">
+    <p class="lbl">明日やること</p>
+    <p>明日は、これまでの経験・能力・持っている資産を詳しく棚卸しします。</p>
+    <p class="line">次の案内はLINEで送ります。</p>
+  </section>
+
+</div><script>(function(){function r(f){if(document.readyState!=='loading'){f();}else{document.addEventListener('DOMContentLoaded',f);}}r(function(){var b=document.getElementById('rlst-copy'),s=document.getElementById('rlst-prompt-text'),live=document.getElementById('rlst-copy-live');if(!b||!s)return;var lbl=b.textContent;function ok(){b.classList.add('done');b.textContent='コピーしました';if(live)live.textContent='プロンプトをコピーしました';setTimeout(function(){b.classList.remove('done');b.textContent=lbl;if(live)live.textContent='';},1600);}function fb(t){var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.position='fixed';x.style.left='-9999px';document.body.appendChild(x);x.focus();x.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(x);}b.addEventListener('click',function(){var t=s.textContent;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}});});})();</script></body></html>

@@ -1,0 +1,207 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DAY 7 自分の内容を加えてVer.1を完成する | ReLoop Starter</title><style>/* === ReLoop Starter — standalone (GitHub Pages) === */
+html, body { margin: 0; padding: 0; background: #F5F7FA; }
+.rlst {
+  --navy: #0B1F3A; --teal: #0FB5A6; --gold: #E0A82E;
+  --off: #F5F7FA; --ink: #1F2937; --white: #FFFFFF;
+  box-sizing: border-box; color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.85; -webkit-text-size-adjust: 100%;
+  max-width: 640px; margin: 0 auto; padding: 0 16px 64px;
+  font-size: 16.5px;
+}
+.rlst *, .rlst *::before, .rlst *::after { box-sizing: border-box; }
+.rlst p { margin: 0 0 14px; }
+.rlst strong { color: var(--navy); }
+.starter-page { max-width: 760px; }
+
+/* ヘッダー */
+.rlst-hero, .starter-hero { background: var(--navy); color: var(--white); border-radius: 16px; padding: 26px 20px 22px; margin: 18px 0 26px; }
+.rlst-badge { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--gold); border: 1px solid rgba(224,168,46,.6); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
+.rlst-hero h1 { font-size: 23px; line-height: 1.5; margin: 0 0 12px; color: var(--white); font-weight: 800; }
+.rlst-hero .lead { font-size: 15.5px; color: #D6DEEA; margin: 0; line-height: 1.85; }
+.rlst-progress, .starter-progress { margin-top: 20px; }
+.rlst-progress .pmeta { display: flex; justify-content: space-between; font-size: 12.5px; color: #AFBCCE; margin-bottom: 6px; }
+.rlst-progress .ptrack { height: 10px; background: rgba(255,255,255,.14); border-radius: 999px; overflow: hidden; }
+.rlst-progress .pfill { height: 100%; background: var(--teal); border-radius: 999px; }
+.rlst-phase { color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: .08em; margin: 0 0 8px; }
+.rlst-time { color: #D6DEEA; font-size: 13.5px; margin: 12px 0 0; }
+.rlst-required, .starter-required { background: #FFF6E6; border: 1px solid #F2D59A; border-left: 5px solid var(--gold); border-radius: 12px; color: var(--ink); padding: 16px 18px; margin: 24px 0 28px; }
+.rlst-required strong { color: var(--navy); display: block; margin-bottom: 6px; }
+
+/* セクション見出し */
+.rlst-sec { margin: 34px 0 0; }
+.rlst-sec--gap { margin-top: 48px; }
+.rlst-sec > h2 { font-size: 19px; font-weight: 800; color: var(--navy); margin: 0 0 14px; padding-left: 12px; border-left: 4px solid var(--teal); line-height: 1.4; }
+.rlst-note { font-size: 14px; color: #5b6573; margin-top: 10px; }
+
+/* ステップカード */
+.rlst-steps { list-style: none; padding: 0; margin: 0; counter-reset: st; }
+.rlst-steps li { counter-increment: st; background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 16px 16px 16px 56px; margin: 0 0 12px; position: relative; font-weight: 600; }
+.rlst-steps li::before { content: counter(st); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; }
+
+/* プロンプト */
+.rlst-prompt { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; overflow: hidden; }
+.rlst-prompt .bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #F0F3F8; padding: 10px 14px; border-bottom: 1px solid #E4E9F0; }
+.rlst-prompt .bar span { font-size: 13px; font-weight: 700; color: var(--navy); }
+.rlst-prompt .bar { flex-wrap: wrap; }
+.rlst-copy { -webkit-appearance: none; appearance: none; border: 0; background: var(--teal); color: #fff; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; }
+.rlst-copy:active { transform: translateY(1px); }
+.rlst-copy.done { background: var(--navy); }
+.rlst-toggle { -webkit-appearance: none; appearance: none; background: transparent; border: 1px solid #C9D2DE; color: var(--navy); font-weight: 700; font-size: 13.5px; padding: 10px 16px; border-radius: 999px; cursor: pointer; min-height: 44px; display: none; align-items: center; }
+.rlst-has-js .rlst-toggle { display: inline-flex; }
+.rlst-toggle:active { transform: translateY(1px); }
+.rlst-copy:focus-visible, .rlst-toggle:focus-visible, .rlst-cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.rlst-prompt pre { margin: 0; padding: 16px; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; font-size: 14.5px; line-height: 1.8; color: var(--ink); background: var(--white); font-family: inherit; }
+.rlst-prompt .hint { margin: 0; padding: 0 16px 14px; font-size: 12.5px; color: #8a93a0; }
+/* JSが動く時だけ折りたたむ（JS無効端末は全文が見えたまま＝本文確認可） */
+.rlst-has-js .rlst-prompt[data-collapsed="true"] .rlst-prompt-body { display: none; }
+.rlst-has-js .rlst-prompt[data-collapsed="true"] .bar { border-bottom: 0; }
+.rlst-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* keep / drop */
+.rlst-kd { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.rlst-kd .col { border-radius: 12px; padding: 14px 16px; }
+.rlst-kd .keep { background: #E7F6F4; border: 1px solid #BCE6E0; }
+.rlst-kd .drop { background: #F1F3F6; border: 1px solid #DDE2E9; }
+.rlst-kd h3 { font-size: 15px; margin: 0 0 10px; font-weight: 800; }
+.rlst-kd .keep h3 { color: #0a8c80; }
+.rlst-kd .drop h3 { color: #6b7480; }
+.rlst-kd ul { list-style: none; padding: 0; margin: 0; }
+.rlst-kd li { position: relative; padding-left: 26px; margin: 0 0 8px; font-size: 15px; line-height: 1.7; }
+.rlst-kd li:last-child { margin-bottom: 0; }
+.rlst-kd .keep li::before { content: "✓"; position: absolute; left: 0; top: 0; color: #0fae9f; font-weight: 800; }
+.rlst-kd .drop li { color: #6b7480; }
+.rlst-kd .drop li::before { content: "×"; position: absolute; left: 2px; top: 0; color: #9aa3af; font-weight: 800; }
+
+/* チェックリスト */
+.rlst-check { list-style: none; padding: 0; margin: 0; }
+.rlst-check li { position: relative; padding: 12px 12px 12px 44px; background: var(--white); border: 1px solid #E4E9F0; border-radius: 10px; margin: 0 0 10px; font-weight: 600; }
+.rlst-check li::before { content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border: 2px solid var(--teal); border-radius: 5px; }
+
+/* 完成例カード */
+.rlst-example { background: #FBF6EA; border: 1px solid #EBD9A8; border-radius: 14px; padding: 18px; }
+.rlst-example h3 { font-size: 14px; color: #9a7b1e; margin: 0 0 4px; font-weight: 800; letter-spacing: .04em; }
+.rlst-example .row { margin: 12px 0 0; }
+.rlst-example .k { font-size: 13px; color: #8a7224; font-weight: 700; margin: 0 0 4px; }
+.rlst-example ol { margin: 0; padding-left: 20px; }
+.rlst-example ol li { margin: 0 0 8px; font-weight: 600; }
+.rlst-example ol li .r { display: block; font-weight: 600; font-size: 13px; color: var(--teal); margin-top: 2px; }
+.rlst-example .pill { display: inline-block; background: #fff; border: 1px solid #EBD9A8; color: var(--navy); font-weight: 700; border-radius: 999px; padding: 5px 14px; }
+
+/* シンプル箇条書き */
+.rlst-list { list-style: none; padding: 0; margin: 0; }
+.rlst-list li { position: relative; padding-left: 20px; margin: 0 0 10px; }
+.rlst-list li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.rlst-disabled-cta { display: block; text-align: center; background: #D9E1EA; color: #4b5563 !important; font-weight: 800; font-size: 16px; padding: 15px 18px; border-radius: 12px; min-height: 52px; }
+.rlst-status { display: inline-flex; min-height: 30px; align-items: center; padding: 4px 10px; border-radius: 999px; background: #EEF2F8; color: #4b5563; font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+
+/* 実践記録 CTA（入力欄でなく「記録する内容」の一覧＋遷移ボタン） */
+.rlst-record { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 18px; }
+.rlst-record .rlbl { font-size: 13px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+.rlst-record .fields { list-style: none; padding: 0; margin: 0 0 18px; }
+.rlst-record .fields li { position: relative; padding-left: 20px; margin: 0 0 9px; font-size: 14.5px; color: #4b5563; }
+.rlst-record .fields li:last-child { margin-bottom: 0; }
+.rlst-record .fields li::before { content: ""; position: absolute; left: 2px; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+.rlst-cta { display: block; text-align: center; background: var(--teal); color: #fff !important; text-decoration: none; font-weight: 800; font-size: 17px; padding: 17px 20px; border-radius: 12px; box-shadow: 0 6px 16px rgba(15,181,166,.28); min-height: 56px; }
+.rlst-cta:active { transform: translateY(1px); }
+.rlst-record .rtime { text-align: center; font-size: 13px; color: #5b6573; margin: 12px 0 0; }
+
+/* 明日 */
+.rlst-tomorrow { background: #EEF2F8; border-radius: 14px; padding: 18px; margin-top: 34px; }
+.rlst-tomorrow .lbl { font-size: 13px; font-weight: 800; color: var(--teal); letter-spacing: .04em; margin: 0 0 8px; }
+.rlst-tomorrow p { margin: 0; }
+.rlst-tomorrow .line { font-size: 14px; color: #5b6573; margin-top: 10px; }
+
+@media (min-width: 600px) {
+  .rlst-kd { grid-template-columns: 1fr 1fr; }
+}</style></head><body><div class="rlst starter-page" data-day="7" data-phase="制作">
+  <header class="rlst-hero starter-hero">
+    <p class="rlst-phase">制作</p>
+    <span class="rlst-badge">DAY 7 / 14</span>
+    <h1>自分の内容を加えてVer.1を完成する</h1>
+    <div class="lead"><p>今日は、AIが作った初稿へ、自分の経験・具体例・注意点・判断を加えます。</p><p>AIの文章を整えるだけではなく、自分にしか追加できない内容を入れ、一人へ見せられるVer.1へ変えます。</p></div>
+    <p class="rlst-time">目安時間：20〜90分</p>
+    <div class="rlst-progress starter-progress" aria-label="ReLoop Starterの進捗">
+      <div class="pmeta"><span>ReLoop Starter</span><span>Day 7 / 14</span></div>
+      <div class="ptrack"><div class="pfill" style="width:50.0%"></div></div>
+    </div>
+  </header>
+
+  <aside class="rlst-required starter-required" role="note"><strong>このDayは修了必須です。</strong><p>Day7は修了必須Dayです。</p><p>Ver.1の保存先と、自分が追加した内容2つ以上の記録が必要です。</p><p>今日完成しない場合も、途中状態を保存し、後から必ず完了してください。</p></aside>
+
+  <section class="rlst-sec starter-outcome">
+    <h2>今日の完成物</h2>
+    <ul class="rlst-check"><li>一人へ見せられる成果物Ver.1</li><li>自分が追加した内容2つ以上</li><li>Ver.1の保存先</li></ul>
+  </section>
+
+  <section class="rlst-sec starter-intro"><h2>導入・考え方</h2><p>Ver.1とは</p><p>完璧な完成品ではありません。</p><p>次の状態を満たせばVer.1です。<br>・最初から最後まで内容を確認できる<br>・対象者と目的が分かる<br>・主要項目が埋まっている<br>・自分の経験や判断が2つ以上入っている<br>・一人へ見せて意見を聞ける</p></section>
+  <section class="rlst-sec starter-step" data-step="1"><h2>STEP1｜AI初稿の一般論を見つける</h2><p>次の箇所を探します。<br>・誰にでも言える表現<br>・具体例がない説明<br>・自分が実際には経験していない内容<br>・対象者には難しい言葉<br>・事実確認が必要な数字や断定</p></section><section class="rlst-sec starter-step" data-step="2"><h2>STEP2｜自分の内容を2つ以上加える</h2><p>次の中から2つ以上を追加してください。<br>・実際に経験した場面<br>・失敗して分かった注意点<br>・初心者が詰まりやすい場所<br>・自分が使っている判断基準<br>・具体的な手順や例<br>・一般論と異なる自分の考え</p><p>AIが作った架空の経験は使わず、自分の事実だけを入れます。</p></section><section class="rlst-sec starter-step" data-step="3"><h2>STEP3｜一人へ見せられる状態に整える</h2><p>最後に、次を確認してVer.1として保存します。<br>・タイトルが内容と一致している<br>・対象者が分かる<br>・主要項目に大きな空欄がない<br>・リンクやファイルを相手が開ける<br>・相手に何を見てほしいか説明できる</p><p>保存時は、ファイル名やページ名にVer.1を付けると履歴を管理しやすくなります。</p></section>
+  <section class="rlst-sec rlst-sec--gap starter-prompt">
+  <h2>AIに貼るプロンプト</h2>
+  <p class="rlst-note">このまま下のボタンでコピーして、AIに貼ってください。全文を読みたいときだけ開けます。</p>
+  <div class="rlst-prompt" id="rlst-prompt" data-collapsed="true">
+    <div class="bar">
+      <span>コピー用プロンプト</span>
+      <button type="button" class="rlst-copy starter-copy-button" id="rlst-copy" aria-controls="rlst-prompt-text">プロンプトをコピー</button>
+      <button type="button" class="rlst-toggle" id="rlst-toggle" aria-expanded="false" aria-controls="rlst-prompt-body">プロンプト全文を見る</button>
+    </div>
+    <div class="rlst-prompt-body" id="rlst-prompt-body">
+      <pre id="rlst-prompt-text">以下の初稿を確認し、次の4点を指摘してください。
+
+1. 一般論だけになっている箇所
+2. 具体例が不足している箇所
+3. 作成者本人の経験や判断を入れると価値が高まる箇所
+4. 誤解・誇張・事実確認のリスクがある箇所
+
+そのうえで、私が追加すべき内容を質問形式で5つ提示してください。
+
+文章を勝手に完成させず、私が答えるべき質問を優先してください。
+
+【初稿】
+ここにDay6の初稿を貼る</pre>
+      <p class="hint">コピーが効かない端末では、上の本文を長押しして全選択してください。</p>
+    </div>
+  </div>
+  <p class="rlst-live" id="rlst-copy-live" role="status" aria-live="polite"></p>
+</section>
+
+  <section class="rlst-sec starter-example">
+    <h2>完成例</h2>
+    <p>Ver.1保存先：GoogleドキュメントURL</p><p>自分が追加した内容：<br>1. 実際に投稿作成で時間がかかった失敗例<br>2. 初心者が対象者を広げすぎる注意点<br>3. 自分が投稿前に確認している3項目</p><p>状態：一人へ見せて、分かりにくい点を聞ける。</p>
+  </section>
+
+  <section class="rlst-sec starter-check"><h2>Ver.1判定チェック</h2><p>Ver.1判定チェック<br>□ 保存先がある<br>□ 最初から最後まで確認できる<br>□ 主要項目が埋まっている<br>□ 本人の経験・具体例・判断が2つ以上ある<br>□ 一人へ共有できる設定になっている</p><p>すべて満たした場合は完成したを選択してください。</p></section>
+
+  <aside class="rlst-sec starter-short">
+    <h2>20分版</h2>
+    <p>重要な3箇所だけ修正し、自分の経験または具体例を2つ追加して保存してください。</p><p>主要項目に大きな空欄がある場合は、まだ途中として記録し、後から完了します。</p>
+  </aside>
+
+  <details class="rlst-sec starter-advanced" open>
+    <summary>発展版</summary>
+    <p>第三者になったつもりで読み、<br>・分かりにくい箇所<br>・根拠が弱い箇所<br>・削ってよい箇所</p><p>を一つずつ記録してください。</p><p>ただし、今日すべてを直す必要はありません。</p>
+  </details>
+
+  <section class="rlst-sec starter-complete">
+    <h2>完了条件</h2>
+    <p>今日の完了条件<br>・一人へ見せられるVer.1を保存した<br>・自分の経験・具体例・判断を2つ以上追加した<br>・保存先を記録した<br>・完成した／まだ途中の状態を選択した</p>
+  </section>
+
+  <section class="rlst-sec rlst-sec--gap starter-cta">
+    <h2>今日の実践記録</h2>
+    <div class="rlst-record">
+      <span class="rlst-status">現在の状態：未記録</span>
+      <p class="rlbl">記録する内容</p>
+      <ul class="fields"><li>Ver.1証拠</li><li>追加した内容</li><li>不安点</li><li>完成または途中状態</li><li>実践時間</li></ul>
+      <span class="rlst-disabled-cta" role="link" aria-disabled="true" data-record-status="未記録">実践記録フォームは準備中です</span>
+      <p class="rtime">所要時間：約3分</p>
+    </div>
+  </section>
+
+  <footer class="rlst-tomorrow starter-next">
+    <p class="lbl">次Day案内</p>
+    <p><strong>Day8｜成果物の説明文を作る</strong></p>
+    <p>明日は、一文説明、100〜200字の紹介、次の行動を示すCTAを作ります。</p>
+    <p class="line">次の案内は原則、翌朝LINEで届きます。</p>
+  </footer>
+</div><script>(function(){function r(f){if(document.readyState!=='loading'){f();}else{document.addEventListener('DOMContentLoaded',f);}}r(function(){var root=document.querySelector('.rlst');if(root)root.classList.add('rlst-has-js');var tg=document.getElementById('rlst-toggle'),pp=document.getElementById('rlst-prompt');if(tg&&pp){tg.addEventListener('click',function(){var col=pp.getAttribute('data-collapsed')==='true';pp.setAttribute('data-collapsed',col?'false':'true');tg.setAttribute('aria-expanded',col?'true':'false');tg.textContent=col?'プロンプトを閉じる':'プロンプト全文を見る';});}var b=document.getElementById('rlst-copy'),s=document.getElementById('rlst-prompt-text'),live=document.getElementById('rlst-copy-live');if(!b||!s)return;var lbl=b.textContent;function ok(){b.classList.add('done');b.textContent='コピーしました';if(live)live.textContent='プロンプトをコピーしました';setTimeout(function(){b.classList.remove('done');b.textContent=lbl;if(live)live.textContent='';},2000);}function fb(t){var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.position='fixed';x.style.left='-9999px';document.body.appendChild(x);x.focus();x.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(x);}b.addEventListener('click',function(){var t=s.textContent;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}});});})();</script></body></html>

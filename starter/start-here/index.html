@@ -1,0 +1,281 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ReLoop Starter｜始める前の準備 | ReLoop Starter</title><style>/* === ReLoop Starter — standalone (GitHub Pages) === */
+html, body { margin: 0; padding: 0; background: #F5F7FA; }
+.rlst {
+  --navy: #0B1F3A; --teal: #0FB5A6; --gold: #E0A82E;
+  --off: #F5F7FA; --ink: #1F2937; --white: #FFFFFF;
+  box-sizing: border-box; color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.85; -webkit-text-size-adjust: 100%;
+  max-width: 640px; margin: 0 auto; padding: 0 16px 64px;
+  font-size: 16.5px;
+}
+.rlst *, .rlst *::before, .rlst *::after { box-sizing: border-box; }
+.rlst p { margin: 0 0 14px; }
+.rlst strong { color: var(--navy); }
+.starter-page { max-width: 760px; }
+
+/* ヘッダー */
+.rlst-hero, .starter-hero { background: var(--navy); color: var(--white); border-radius: 16px; padding: 26px 20px 22px; margin: 18px 0 26px; }
+.rlst-badge { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--gold); border: 1px solid rgba(224,168,46,.6); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
+.rlst-hero h1 { font-size: 23px; line-height: 1.5; margin: 0 0 12px; color: var(--white); font-weight: 800; }
+.rlst-hero .lead { font-size: 15.5px; color: #D6DEEA; margin: 0; line-height: 1.85; }
+.rlst-progress, .starter-progress { margin-top: 20px; }
+.rlst-progress .pmeta { display: flex; justify-content: space-between; font-size: 12.5px; color: #AFBCCE; margin-bottom: 6px; }
+.rlst-progress .ptrack { height: 10px; background: rgba(255,255,255,.14); border-radius: 999px; overflow: hidden; }
+.rlst-progress .pfill { height: 100%; background: var(--teal); border-radius: 999px; }
+.rlst-phase { color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: .08em; margin: 0 0 8px; }
+.rlst-time { color: #D6DEEA; font-size: 13.5px; margin: 12px 0 0; }
+.rlst-required, .starter-required { background: #FFF6E6; border: 1px solid #F2D59A; border-left: 5px solid var(--gold); border-radius: 12px; color: var(--ink); padding: 16px 18px; margin: 24px 0 28px; }
+.rlst-required strong { color: var(--navy); display: block; margin-bottom: 6px; }
+
+/* セクション見出し */
+.rlst-sec { margin: 34px 0 0; }
+.rlst-sec--gap { margin-top: 48px; }
+.rlst-sec > h2 { font-size: 19px; font-weight: 800; color: var(--navy); margin: 0 0 14px; padding-left: 12px; border-left: 4px solid var(--teal); line-height: 1.4; }
+.rlst-note { font-size: 14px; color: #5b6573; margin-top: 10px; }
+
+/* ステップカード */
+.rlst-steps { list-style: none; padding: 0; margin: 0; counter-reset: st; }
+.rlst-steps li { counter-increment: st; background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 16px 16px 16px 56px; margin: 0 0 12px; position: relative; font-weight: 600; }
+.rlst-steps li::before { content: counter(st); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; }
+
+/* プロンプト */
+.rlst-prompt { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; overflow: hidden; }
+.rlst-prompt .bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #F0F3F8; padding: 10px 14px; border-bottom: 1px solid #E4E9F0; }
+.rlst-prompt .bar span { font-size: 13px; font-weight: 700; color: var(--navy); }
+.rlst-prompt .bar { flex-wrap: wrap; }
+.rlst-copy { -webkit-appearance: none; appearance: none; border: 0; background: var(--teal); color: #fff; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; }
+.rlst-copy:active { transform: translateY(1px); }
+.rlst-copy.done { background: var(--navy); }
+.rlst-toggle { -webkit-appearance: none; appearance: none; background: transparent; border: 1px solid #C9D2DE; color: var(--navy); font-weight: 700; font-size: 13.5px; padding: 10px 16px; border-radius: 999px; cursor: pointer; min-height: 44px; display: none; align-items: center; }
+.rlst-has-js .rlst-toggle { display: inline-flex; }
+.rlst-toggle:active { transform: translateY(1px); }
+.rlst-copy:focus-visible, .rlst-toggle:focus-visible, .rlst-cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.rlst-prompt pre { margin: 0; padding: 16px; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; font-size: 14.5px; line-height: 1.8; color: var(--ink); background: var(--white); font-family: inherit; }
+.rlst-prompt .hint { margin: 0; padding: 0 16px 14px; font-size: 12.5px; color: #8a93a0; }
+/* JSが動く時だけ折りたたむ（JS無効端末は全文が見えたまま＝本文確認可） */
+.rlst-has-js .rlst-prompt[data-collapsed="true"] .rlst-prompt-body { display: none; }
+.rlst-has-js .rlst-prompt[data-collapsed="true"] .bar { border-bottom: 0; }
+.rlst-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* keep / drop */
+.rlst-kd { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.rlst-kd .col { border-radius: 12px; padding: 14px 16px; }
+.rlst-kd .keep { background: #E7F6F4; border: 1px solid #BCE6E0; }
+.rlst-kd .drop { background: #F1F3F6; border: 1px solid #DDE2E9; }
+.rlst-kd h3 { font-size: 15px; margin: 0 0 10px; font-weight: 800; }
+.rlst-kd .keep h3 { color: #0a8c80; }
+.rlst-kd .drop h3 { color: #6b7480; }
+.rlst-kd ul { list-style: none; padding: 0; margin: 0; }
+.rlst-kd li { position: relative; padding-left: 26px; margin: 0 0 8px; font-size: 15px; line-height: 1.7; }
+.rlst-kd li:last-child { margin-bottom: 0; }
+.rlst-kd .keep li::before { content: "✓"; position: absolute; left: 0; top: 0; color: #0fae9f; font-weight: 800; }
+.rlst-kd .drop li { color: #6b7480; }
+.rlst-kd .drop li::before { content: "×"; position: absolute; left: 2px; top: 0; color: #9aa3af; font-weight: 800; }
+
+/* チェックリスト */
+.rlst-check { list-style: none; padding: 0; margin: 0; }
+.rlst-check li { position: relative; padding: 12px 12px 12px 44px; background: var(--white); border: 1px solid #E4E9F0; border-radius: 10px; margin: 0 0 10px; font-weight: 600; }
+.rlst-check li::before { content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border: 2px solid var(--teal); border-radius: 5px; }
+
+/* 完成例カード */
+.rlst-example { background: #FBF6EA; border: 1px solid #EBD9A8; border-radius: 14px; padding: 18px; }
+.rlst-example h3 { font-size: 14px; color: #9a7b1e; margin: 0 0 4px; font-weight: 800; letter-spacing: .04em; }
+.rlst-example .row { margin: 12px 0 0; }
+.rlst-example .k { font-size: 13px; color: #8a7224; font-weight: 700; margin: 0 0 4px; }
+.rlst-example ol { margin: 0; padding-left: 20px; }
+.rlst-example ol li { margin: 0 0 8px; font-weight: 600; }
+.rlst-example ol li .r { display: block; font-weight: 600; font-size: 13px; color: var(--teal); margin-top: 2px; }
+.rlst-example .pill { display: inline-block; background: #fff; border: 1px solid #EBD9A8; color: var(--navy); font-weight: 700; border-radius: 999px; padding: 5px 14px; }
+
+/* シンプル箇条書き */
+.rlst-list { list-style: none; padding: 0; margin: 0; }
+.rlst-list li { position: relative; padding-left: 20px; margin: 0 0 10px; }
+.rlst-list li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.rlst-disabled-cta { display: block; text-align: center; background: #D9E1EA; color: #4b5563 !important; font-weight: 800; font-size: 16px; padding: 15px 18px; border-radius: 12px; min-height: 52px; }
+.rlst-status { display: inline-flex; min-height: 30px; align-items: center; padding: 4px 10px; border-radius: 999px; background: #EEF2F8; color: #4b5563; font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+
+/* 実践記録 CTA（入力欄でなく「記録する内容」の一覧＋遷移ボタン） */
+.rlst-record { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 18px; }
+.rlst-record .rlbl { font-size: 13px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+.rlst-record .fields { list-style: none; padding: 0; margin: 0 0 18px; }
+.rlst-record .fields li { position: relative; padding-left: 20px; margin: 0 0 9px; font-size: 14.5px; color: #4b5563; }
+.rlst-record .fields li:last-child { margin-bottom: 0; }
+.rlst-record .fields li::before { content: ""; position: absolute; left: 2px; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+.rlst-cta { display: block; text-align: center; background: var(--teal); color: #fff !important; text-decoration: none; font-weight: 800; font-size: 17px; padding: 17px 20px; border-radius: 12px; box-shadow: 0 6px 16px rgba(15,181,166,.28); min-height: 56px; }
+.rlst-cta:active { transform: translateY(1px); }
+.rlst-record .rtime { text-align: center; font-size: 13px; color: #5b6573; margin: 12px 0 0; }
+
+/* 明日 */
+.rlst-tomorrow { background: #EEF2F8; border-radius: 14px; padding: 18px; margin-top: 34px; }
+.rlst-tomorrow .lbl { font-size: 13px; font-weight: 800; color: var(--teal); letter-spacing: .04em; margin: 0 0 8px; }
+.rlst-tomorrow p { margin: 0; }
+.rlst-tomorrow .line { font-size: 14px; color: #5b6573; margin-top: 10px; }
+
+@media (min-width: 600px) {
+  .rlst-kd { grid-template-columns: 1fr 1fr; }
+}
+
+/* start-here */
+.start-here-page .rlst-hero { margin-bottom: 16px; }
+.rlst-toc { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 14px; margin: 0 0 24px; }
+.rlst-toc .ttl { font-size: 13px; font-weight: 800; color: var(--navy); margin: 0 0 8px; }
+.rlst-toc nav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+.rlst-toc a { flex: 0 0 auto; min-height: 40px; display: inline-flex; align-items: center; color: var(--navy); text-decoration: none; border: 1px solid #D7DEE8; border-radius: 999px; padding: 7px 12px; font-size: 13px; font-weight: 700; background: #FAFBFD; }
+.rlst-video { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 16px; }
+.rlst-video-box { max-width: 760px; margin: 0 auto; }
+.rlst-video iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 10px; background: #111827; }
+.rlst-video-pending { background: #EEF2F8; border: 1px dashed #B9C5D4; border-radius: 12px; padding: 16px; color: #4b5563; font-weight: 700; }
+.rlst-video-meta { margin-top: 14px; }
+.rlst-mini { font-size: 13px; color: #5b6573; margin-top: 6px; }
+.rlst-cardgrid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.rlst-card { background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 15px 16px; }
+.rlst-card strong { display: block; margin-bottom: 4px; }
+.rlst-principles { counter-reset: pr; }
+.rlst-principles .rlst-card { counter-increment: pr; position: relative; padding-left: 52px; min-height: 62px; display: flex; align-items: center; font-weight: 800; color: var(--navy); }
+.rlst-principles .rlst-card::before { content: counter(pr); position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--teal); color: #fff; font-size: 14px; }
+.rlst-close { background: #FBF6EA; border: 1px solid #EBD9A8; border-radius: 12px; padding: 15px 16px; font-weight: 800; color: var(--navy); }
+.rlst-choice { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.rlst-choice label { display: flex; align-items: center; gap: 10px; min-height: 48px; background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 10px 12px; font-weight: 800; color: var(--navy); }
+.rlst-choice input { width: 20px; height: 20px; accent-color: var(--teal); flex: 0 0 auto; }
+.rlst-alert { background: #FFF6E6; border: 1px solid #F2D59A; border-left: 5px solid var(--gold); border-radius: 12px; padding: 16px; }
+.rlst-danger { background: #FFF1F2; border-color: #FEB6BF; border-left-color: #E5485D; }
+.rlst-chiplist { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.rlst-chip { display: inline-flex; align-items: center; min-height: 34px; border-radius: 999px; padding: 5px 11px; background: #F0F3F8; color: #4b5563; font-size: 13px; font-weight: 700; }
+.rlst-instruction { display: grid; gap: 12px; }
+.rlst-instruction .rlst-prompt pre { font-size: 14px; }
+.rlst-copy-row { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.rlst-copy-row p { margin: 0; font-weight: 700; color: var(--navy); }
+.rlst-ready { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 16px; }
+.rlst-ready label { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 9px 0; font-weight: 700; }
+.rlst-ready input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--teal); flex: 0 0 auto; }
+.rlst-button { width: 100%; border: 0; text-decoration: none; justify-content: center; }
+.rlst-button[disabled], .rlst-button.is-disabled { background: #D9E1EA; color: #4b5563 !important; box-shadow: none; cursor: not-allowed; }
+.rlst-mutedbox { background: #EEF2F8; border-radius: 12px; padding: 14px 16px; color: #4b5563; font-weight: 700; }
+.rlst-faq-actions { display: grid; gap: 10px; }
+.rlst-secondary { display: block; text-align: center; min-height: 50px; padding: 13px 16px; border-radius: 12px; border: 1px solid #D7DEE8; background: #FAFBFD; color: var(--navy) !important; text-decoration: none; font-weight: 800; }
+.rlst-secondary.is-disabled { color: #6b7280 !important; background: #E8EDF3; }
+@media (min-width: 600px) {
+  .rlst-cardgrid { grid-template-columns: 1fr 1fr; }
+  .rlst-faq-actions { grid-template-columns: 1fr 1fr; }
+}</style></head><body><div class="rlst starter-page start-here-page" data-page="starter-start-here" data-state-key="starter_onboarding_completed">
+  <header class="rlst-hero starter-hero">
+    <p class="rlst-phase">START HERE</p>
+    <span class="rlst-badge">ReLoop Starter</span>
+    <h1>ReLoop Starter｜始める前の準備</h1>
+    <div class="lead"><p>ReLoop Starterを始める前に。このページでは、使うAIを一つ決め、登録・ログインし、プロンプトをコピーして使う方法まで確認します。特別な知識や有料ツールは必要ありません。5分ほどで準備できます。</p></div>
+    <p class="rlst-time">目安時間：5分</p>
+    <div class="rlst-progress starter-progress" aria-label="準備の進捗">
+      <div class="pmeta"><span>開始前の準備</span><span>準備 0 / 5</span></div>
+      <div class="ptrack"><div class="pfill" style="width:0%"></div></div>
+    </div>
+  </header>
+
+  <div class="rlst-toc" aria-label="ページ内ナビ">
+    <p class="ttl">このページで確認すること</p>
+    <nav>
+      <a href="#principles-video">行動原則</a><a href="#overview">概要</a><a href="#ai-choice">AI選択</a>
+      <a href="#practice-prompt">練習</a><a href="#safety">安全</a><a href="#ready">準備完了</a>
+    </nav>
+  </div>
+
+  <section class="rlst-sec starter-video" id="principles-video">
+  <h2>SH-V00 行動原則スライド動画</h2>
+  <div class="rlst-video">
+    <div class="rlst-video-pending" role="note">動画は現在準備中です。下の7つの行動原則を確認すれば、そのまま準備を進められます。</div>
+    <div class="rlst-video-meta">
+      <p><strong>14日間で大事にする7つの行動原則</strong></p>
+      <p class="rlst-mini">目安時間：3〜4分</p>
+      <ul class="rlst-list"><li>完璧にしてから出さない</li><li>AIの出力をそのまま完成品にしない</li><li>作る、届ける、記録する、改善するを一周する</li></ul>
+      <p class="rlst-mini"><a href="#principles-text">文章で7つの行動原則を確認する</a></p>
+      <p class="rlst-mini">動画は視聴必須ではありません。文章だけでも最後まで進められます。</p>
+    </div>
+  </div>
+</section>
+
+  <section class="rlst-sec" id="principles-text">
+    <h2>7つの行動原則</h2>
+    <div class="rlst-cardgrid rlst-principles"><div class="rlst-card">完璧にしてから出さない</div><div class="rlst-card">AIの出力をそのまま完成品にしない</div><div class="rlst-card">小さく作って、まず一人へ届ける</div><div class="rlst-card">反応ゼロも正式なデータ</div><div class="rlst-card">売上がなくても一周できれば前進</div><div class="rlst-card">変えるのは一度に一か所</div><div class="rlst-card">他人ではなく、昨日の自分と比べる</div></div>
+    <div class="rlst-close">この14日間の目的は、すごいものを作ることではありません。作る、届ける、記録する、改善するを一周することです。</div>
+  </section>
+
+  <section class="rlst-sec" id="overview">
+    <h2>Starter概要</h2>
+    <p>ReLoop Starterは、AIを学ぶだけで終わらず、14日間で小さな成果物を作り、一人以上へ届け、反応を記録し、一か所改善する実践プログラムです。最低20分で進められ、売上・フォロワー・閲覧数は修了条件ではありません。</p>
+    <div class="rlst-cardgrid">
+      <div class="rlst-card"><strong>作る</strong>小さな成果物を形にします。</div>
+      <div class="rlst-card"><strong>届ける</strong>一人以上へ見せます。</div>
+      <div class="rlst-card"><strong>記録する</strong>反応や無反応を残します。</div>
+      <div class="rlst-card"><strong>改善する</strong>一か所だけ直します。</div>
+    </div>
+  </section>
+
+  <section class="rlst-sec" id="ai-choice">
+    <h2>使うAIを選ぶ</h2>
+    <p>ChatGPT、Gemini、Claudeなど、今使えるAIを一つ選んでください。迷う場合はChatGPTで問題ありません。無料プランから始められ、特定AIは必須ではありません。</p>
+    <div class="rlst-choice" role="radiogroup" aria-label="使うAI"><label><input type="radio" name="starter_ai_choice" value="ChatGPT" checked> <span>ChatGPT</span></label><label><input type="radio" name="starter_ai_choice" value="Gemini"> <span>Gemini</span></label><label><input type="radio" name="starter_ai_choice" value="Claude"> <span>Claude</span></label><label><input type="radio" name="starter_ai_choice" value="その他"> <span>その他</span></label><label><input type="radio" name="starter_ai_choice" value="すでに使えるAIがある"> <span>すでに使えるAIがある</span></label></div>
+  </section>
+
+  <section class="rlst-sec" id="login">
+    <h2>AIへの登録・ログイン</h2>
+    <p>選んだAIの公式サイトまたは公式アプリを開き、アカウントを作成してログインしてください。広告や非公式アプリではなく公式サービスであることを確認してください。</p>
+    <div class="rlst-alert">広告や非公式アプリではなく、公式サービスであることを確認してください。有料プラン加入は不要です。</div>
+  </section>
+
+  <section class="rlst-sec" id="prompt-use">
+    <h2>プロンプトの使い方</h2>
+    <p>各Dayのコピーボタンを押し、AIの入力欄へ貼り付け、自分の情報を書く欄を埋めて送信します。回答を読み、使える部分だけ残します。自分に合わせて変更して構いません。</p>
+  </section>
+
+  <section class="rlst-sec rlst-sec--gap" id="practice-prompt">
+    <h2>練習プロンプト</h2>
+    <div class="rlst-prompt">
+  <div class="bar">
+    <span>コピー用練習プロンプト</span>
+    <button type="button" class="rlst-copy starter-copy-button" data-copy-target="starter-practice-prompt">この文章をコピー</button>
+  </div>
+  <pre id="starter-practice-prompt">私はこれから14日間、AIを使って小さな成果物を一つ作ります。私が入力した内容を勝手に補わず、分かったこと・まだ分からないこと・次に一つだけ考えることの3項目で返してください。使える時間：20分。気になること：AIを使って何か形にしたい。</pre>
+  <p class="hint">コピーできない場合は、本文を長押しして選択してください。</p>
+</div>
+  </section>
+
+  <section class="rlst-sec" id="extra-instructions">
+    <h2>回答が微妙な場合の追加指示</h2>
+    <p>回答が長い、難しい、抽象的、または自分に合わない場合は、追加で短く具体的に伝えます。一度で完璧な回答を出す必要はありません。</p>
+    <div class="rlst-instruction"><div class="rlst-card"><div class="rlst-copy-row"><p id="starter-extra-1" data-extra-copy>初心者にも分かる言葉で書き直してください</p><button type="button" class="rlst-copy" data-copy-target="starter-extra-1">コピー</button></div></div><div class="rlst-card"><div class="rlst-copy-row"><p id="starter-extra-2" data-extra-copy>一つずつ順番に説明してください</p><button type="button" class="rlst-copy" data-copy-target="starter-extra-2">コピー</button></div></div><div class="rlst-card"><div class="rlst-copy-row"><p id="starter-extra-3" data-extra-copy>候補を3つに絞ってください</p><button type="button" class="rlst-copy" data-copy-target="starter-extra-3">コピー</button></div></div><div class="rlst-card"><div class="rlst-copy-row"><p id="starter-extra-4" data-extra-copy>私が書いていない経験を追加しないでください</p><button type="button" class="rlst-copy" data-copy-target="starter-extra-4">コピー</button></div></div><div class="rlst-card"><div class="rlst-copy-row"><p id="starter-extra-5" data-extra-copy>20分でできる大きさにしてください</p><button type="button" class="rlst-copy" data-copy-target="starter-extra-5">コピー</button></div></div><button type="button" class="rlst-copy rlst-button" data-copy-all>追加指示をまとめてコピー</button></div>
+  </section>
+
+  <section class="rlst-sec" id="safety">
+    <h2>AI利用時の安全上の注意</h2>
+    <div class="rlst-alert rlst-danger">
+      <p>AIの回答には間違い、古い情報、もっともらしい作り話が含まれる場合があります。数字、制度、法律、医療、契約、料金、最新情報は公式情報を確認し、AIだけで重要な判断をしないでください。</p>
+      <div class="rlst-chiplist"><span class="rlst-chip">パスワード</span><span class="rlst-chip">APIキー</span><span class="rlst-chip">認証コード</span><span class="rlst-chip">クレジットカード情報</span><span class="rlst-chip">住所</span><span class="rlst-chip">電話番号</span><span class="rlst-chip">他人の個人情報</span><span class="rlst-chip">顧客情報</span><span class="rlst-chip">勤務先の機密情報</span><span class="rlst-chip">公開してはいけない契約書や社内資料</span></div>
+    </div>
+    <p>必要な場合は伏せ字と一般化を使います。AIや問い合わせフォームには、下の情報を入力しないでください。</p>
+  </section>
+
+  <section class="rlst-sec" id="record">
+    <h2>実践記録の説明</h2>
+    <p>各Dayの最後に今日行ったことを実践記録へ残します。完成度を競うものではありません。途中、分からなかったこと、無反応も記録できます。再提出は以前の記録を消さず、新しいrevisionとして追加します。</p>
+    <div class="rlst-mutedbox">修正時は以前の記録を消さず、新しいrevisionを追加します。</div>
+  </section>
+
+  <section class="rlst-sec" id="faq">
+    <h2>困った時のFAQ・問い合わせ導線</h2>
+    <p>まずFAQを検索し、解決しなければ問い合わせフォームから質問します。Ryuが回答し、頻出質問はFAQや教材へ反映します。個人情報・APIキー・顧客情報は送らないでください。</p>
+    <div class="rlst-faq-actions"><span class="rlst-secondary is-disabled" role="link" aria-disabled="true">FAQは準備中です</span><span class="rlst-secondary is-disabled" role="link" aria-disabled="true">問い合わせフォームは準備中です</span></div>
+    <div class="rlst-alert rlst-danger">問い合わせにも、個人情報・APIキー・顧客情報は送らないでください。</div>
+  </section>
+
+  <section class="rlst-sec rlst-sec--gap" id="ready">
+    <h2>準備完了チェック</h2>
+    <p>使うAIを一つ決め、登録・ログインし、練習プロンプトを一度送り、安全上の注意を確認できたら準備完了です。</p>
+    <div class="rlst-ready"><label><input type="checkbox" data-ready-check> <span>使うAIを一つ決めた</span></label><label><input type="checkbox" data-ready-check> <span>登録・ログインできた</span></label><label><input type="checkbox" data-ready-check> <span>練習プロンプトを一度送った</span></label><label><input type="checkbox" data-ready-check> <span>AIの回答を確認した</span></label><label><input type="checkbox" data-ready-check> <span>個人情報・機密情報の注意を確認した</span></label><p class="rlst-mini" data-ready-message>すべて確認するとDay1へのボタンが有効になります。</p></div>
+  </section>
+
+  <section class="rlst-sec starter-cta" id="day1">
+    <h2>Day1へのCTA</h2>
+    <p>準備は完了です。Day1では、使える時間と経験をAIへ渡し、14日で作れそうな成果物候補を3つ出します。最終決定はまだ必要ありません。</p>
+    <a class="rlst-cta rlst-button is-disabled" data-day1-cta data-href="https://reloop-ai.com/?page_id=60" target="_top" aria-disabled="true">準備を完了してDay1へ進む</a>
+  </section>
+</div><script>(function(){function r(f){if(document.readyState!=='loading'){f();}else{document.addEventListener('DOMContentLoaded',f);}}r(function(){var root=document.querySelector('.rlst');if(root)root.classList.add('rlst-has-js');function fb(t){var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.position='fixed';x.style.left='-9999px';document.body.appendChild(x);x.focus();x.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(x);}function copyText(t,btn){var old=btn.textContent;function ok(){btn.classList.add('done');btn.textContent='コピーしました';setTimeout(function(){btn.classList.remove('done');btn.textContent=old;},1800);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}}document.querySelectorAll('[data-copy-target]').forEach(function(btn){btn.addEventListener('click',function(){var el=document.getElementById(btn.getAttribute('data-copy-target'));if(!el)return;copyText(el.textContent,btn);});});var all=document.querySelector('[data-copy-all]');if(all){all.addEventListener('click',function(){var t=[].map.call(document.querySelectorAll('[data-extra-copy]'),function(el){return el.textContent.trim();}).filter(Boolean).join('\n');if(t)copyText(t,all);});}var checks=[].slice.call(document.querySelectorAll('[data-ready-check]'));var cta=document.querySelector('[data-day1-cta]'),msg=document.querySelector('[data-ready-message]');function upd(){var ok=checks.length&&checks.every(function(x){return x.checked;});if(cta){if(ok&&cta.getAttribute('data-href')){cta.classList.remove('is-disabled');cta.removeAttribute('aria-disabled');cta.setAttribute('href',cta.getAttribute('data-href'));}else{cta.classList.add('is-disabled');cta.setAttribute('aria-disabled','true');cta.removeAttribute('href');}}if(msg){msg.textContent=ok?'準備チェックが完了しました。Day1へ進めます。':'すべて確認するとDay1へのボタンが有効になります。';}}checks.forEach(function(x){x.addEventListener('change',upd);});upd();});})();</script></body></html>

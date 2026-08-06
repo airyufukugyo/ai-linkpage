@@ -201,7 +201,7 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
 
   <section class="rlst-sec" id="overview">
     <h2>Starter概要</h2>
-    <p>ReLoop Starterは、AIを学ぶだけで終わらず、14日間で小さな成果物を作り、一人以上へ届け、反応を記録し、一か所改善する実践プログラムです。最低20分で進められ、売上・フォロワー・閲覧数は修了条件ではありません。</p>
+    <p>ReLoop Starterは、AIを学ぶだけで終わらず、14日間で小さな成果物を作り、一人以上へ届け、反応を記録し、一か所改善する実践プログラムです。最低20分で進められ、売上・フォロワー・閲覧数は修了条件ではありません。</p><p>修了条件は、必須の5日間（Day2・7・11・13・14）を完了し、実践記録を10日分以上残すことです。14日は連続でなくても構いません。間が空いた日があれば、そのまま次の日から続けてください。</p>
     <div class="rlst-cardgrid">
       <div class="rlst-card"><strong>作る</strong>小さな成果物を形にします。</div>
       <div class="rlst-card"><strong>届ける</strong>一人以上へ見せます。</div>
@@ -262,8 +262,8 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
 
   <section class="rlst-sec" id="faq">
     <h2>困った時のFAQ・問い合わせ導線</h2>
-    <p>まずFAQを検索し、解決しなければ問い合わせフォームから質問します。Ryuが回答し、頻出質問はFAQや教材へ反映します。個人情報・APIキー・顧客情報は送らないでください。</p>
-    <div class="rlst-faq-actions"><span class="rlst-secondary is-disabled" role="link" aria-disabled="true">FAQは準備中です</span><span class="rlst-secondary is-disabled" role="link" aria-disabled="true">問い合わせフォームは準備中です</span></div>
+    <p>まずFAQを検索し、解決しなければ問い合わせフォームから質問します。回答は週ごとにまとめてお返しします（個別に24時間以内の返信はお約束していません）。Ryuが回答し、頻出質問はFAQや教材へ反映します。個人情報・APIキー・顧客情報は送らないでください。</p>
+    <div class="rlst-faq-actions"><span class="rlst-secondary is-disabled" role="link" aria-disabled="true">FAQは準備中です</span><a class="rlst-secondary" href="https://reloop-ai.com/contact/" rel="nofollow">解決しないので問い合わせる</a></div>
     <div class="rlst-alert rlst-danger">問い合わせにも、個人情報・APIキー・顧客情報は送らないでください。</div>
   </section>
 
@@ -276,6 +276,6 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
   <section class="rlst-sec starter-cta" id="day1">
     <h2>Day1へのCTA</h2>
     <p>準備は完了です。Day1では、使える時間と経験をAIへ渡し、14日で作れそうな成果物候補を3つ出します。最終決定はまだ必要ありません。</p>
-    <a class="rlst-cta rlst-button is-disabled" data-day1-cta data-href="https://reloop-ai.com/?page_id=60" target="_top" aria-disabled="true">準備を完了してDay1へ進む</a>
+    <span class="rlst-disabled-cta" role="link" aria-disabled="true" data-day1-cta>Day1ページとの接続は準備中です</span>
   </section>
 </div><script>(function(){function r(f){if(document.readyState!=='loading'){f();}else{document.addEventListener('DOMContentLoaded',f);}}r(function(){var root=document.querySelector('.rlst');if(root)root.classList.add('rlst-has-js');function fb(t){var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.position='fixed';x.style.left='-9999px';document.body.appendChild(x);x.focus();x.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(x);}function copyText(t,btn){var old=btn.textContent;function ok(){btn.classList.add('done');btn.textContent='コピーしました';setTimeout(function(){btn.classList.remove('done');btn.textContent=old;},1800);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}}document.querySelectorAll('[data-copy-target]').forEach(function(btn){btn.addEventListener('click',function(){var el=document.getElementById(btn.getAttribute('data-copy-target'));if(!el)return;copyText(el.textContent,btn);});});var all=document.querySelector('[data-copy-all]');if(all){all.addEventListener('click',function(){var t=[].map.call(document.querySelectorAll('[data-extra-copy]'),function(el){return el.textContent.trim();}).filter(Boolean).join('\n');if(t)copyText(t,all);});}var checks=[].slice.call(document.querySelectorAll('[data-ready-check]'));var cta=document.querySelector('[data-day1-cta]'),msg=document.querySelector('[data-ready-message]');function upd(){var ok=checks.length&&checks.every(function(x){return x.checked;});if(cta){if(ok&&cta.getAttribute('data-href')){cta.classList.remove('is-disabled');cta.removeAttribute('aria-disabled');cta.setAttribute('href',cta.getAttribute('data-href'));}else{cta.classList.add('is-disabled');cta.setAttribute('aria-disabled','true');cta.removeAttribute('href');}}if(msg){msg.textContent=ok?'準備チェックが完了しました。Day1へ進めます。':'すべて確認するとDay1へのボタンが有効になります。';}}checks.forEach(function(x){x.addEventListener('change',upd);});upd();});})();</script></body></html>

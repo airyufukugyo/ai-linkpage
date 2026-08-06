@@ -114,6 +114,50 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
 
 @media (min-width: 600px) {
   .rlst-kd { grid-template-columns: 1fr 1fr; }
+}
+
+/* start-here */
+.start-here-page .rlst-hero { margin-bottom: 16px; }
+.rlst-toc { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 14px; margin: 0 0 24px; }
+.rlst-toc .ttl { font-size: 13px; font-weight: 800; color: var(--navy); margin: 0 0 8px; }
+.rlst-toc nav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+.rlst-toc a { flex: 0 0 auto; min-height: 40px; display: inline-flex; align-items: center; color: var(--navy); text-decoration: none; border: 1px solid #D7DEE8; border-radius: 999px; padding: 7px 12px; font-size: 13px; font-weight: 700; background: #FAFBFD; }
+.rlst-video { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 16px; }
+.rlst-video-box { max-width: 760px; margin: 0 auto; }
+.rlst-video iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 10px; background: #111827; }
+.rlst-video-pending { background: #EEF2F8; border: 1px dashed #B9C5D4; border-radius: 12px; padding: 16px; color: #4b5563; font-weight: 700; }
+.rlst-video-meta { margin-top: 14px; }
+.rlst-mini { font-size: 13px; color: #5b6573; margin-top: 6px; }
+.rlst-cardgrid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.rlst-card { background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 15px 16px; }
+.rlst-card strong { display: block; margin-bottom: 4px; }
+.rlst-principles { counter-reset: pr; }
+.rlst-principles .rlst-card { counter-increment: pr; position: relative; padding-left: 52px; min-height: 62px; display: flex; align-items: center; font-weight: 800; color: var(--navy); }
+.rlst-principles .rlst-card::before { content: counter(pr); position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--teal); color: #fff; font-size: 14px; }
+.rlst-close { background: #FBF6EA; border: 1px solid #EBD9A8; border-radius: 12px; padding: 15px 16px; font-weight: 800; color: var(--navy); }
+.rlst-choice { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.rlst-choice label { display: flex; align-items: center; gap: 10px; min-height: 48px; background: var(--white); border: 1px solid #E4E9F0; border-radius: 12px; padding: 10px 12px; font-weight: 800; color: var(--navy); }
+.rlst-choice input { width: 20px; height: 20px; accent-color: var(--teal); flex: 0 0 auto; }
+.rlst-alert { background: #FFF6E6; border: 1px solid #F2D59A; border-left: 5px solid var(--gold); border-radius: 12px; padding: 16px; }
+.rlst-danger { background: #FFF1F2; border-color: #FEB6BF; border-left-color: #E5485D; }
+.rlst-chiplist { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.rlst-chip { display: inline-flex; align-items: center; min-height: 34px; border-radius: 999px; padding: 5px 11px; background: #F0F3F8; color: #4b5563; font-size: 13px; font-weight: 700; }
+.rlst-instruction { display: grid; gap: 12px; }
+.rlst-instruction .rlst-prompt pre { font-size: 14px; }
+.rlst-copy-row { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.rlst-copy-row p { margin: 0; font-weight: 700; color: var(--navy); }
+.rlst-ready { background: var(--white); border: 1px solid #E4E9F0; border-radius: 14px; padding: 16px; }
+.rlst-ready label { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 9px 0; font-weight: 700; }
+.rlst-ready input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--teal); flex: 0 0 auto; }
+.rlst-button { width: 100%; border: 0; text-decoration: none; justify-content: center; }
+.rlst-button[disabled], .rlst-button.is-disabled { background: #D9E1EA; color: #4b5563 !important; box-shadow: none; cursor: not-allowed; }
+.rlst-mutedbox { background: #EEF2F8; border-radius: 12px; padding: 14px 16px; color: #4b5563; font-weight: 700; }
+.rlst-faq-actions { display: grid; gap: 10px; }
+.rlst-secondary { display: block; text-align: center; min-height: 50px; padding: 13px 16px; border-radius: 12px; border: 1px solid #D7DEE8; background: #FAFBFD; color: var(--navy) !important; text-decoration: none; font-weight: 800; }
+.rlst-secondary.is-disabled { color: #6b7280 !important; background: #E8EDF3; }
+@media (min-width: 600px) {
+  .rlst-cardgrid { grid-template-columns: 1fr 1fr; }
+  .rlst-faq-actions { grid-template-columns: 1fr 1fr; }
 }</style></head><body><div class="rlst starter-page" data-day="3" data-phase="材料">
   <header class="rlst-hero starter-hero">
     <p class="rlst-phase">材料</p>
@@ -171,10 +215,7 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
   <p class="rlst-live" id="rlst-copy-live" role="status" aria-live="polite"></p>
 </section>
 
-  <section class="rlst-sec starter-example">
-    <h2>完成例</h2>
-    <p>選択ルート：提供物</p><p>候補：<br>1. SNS投稿テンプレ<br>2. 営業前チェックリスト<br>3. AI初心者向け手順書<br>4. 確定申告準備リスト<br>5. 案件応募文テンプレ</p><p>採用成果物：初心者向けSNS投稿テンプレ</p><p>理由：経験を使えて、14日以内に完成し、一人へ渡しやすいから。</p>
-  </section>
+  <section class="rlst-sec starter-example"><h2>完成例</h2><p>選択ルート：提供物</p><p>候補：<br>1. SNS投稿テンプレ<br>2. 営業前チェックリスト<br>3. AI初心者向け手順書<br>4. 確定申告準備リスト<br>5. 案件応募文テンプレ</p><p>採用成果物：初心者向けSNS投稿テンプレ</p><p>理由：経験を使えて、14日以内に完成し、一人へ渡しやすいから。</p></section>
 
   <section class="rlst-sec starter-check"><h2>品質チェック</h2><p>後で変更可能です。</p><p>ただし、大きすぎる成果物は禁止です。14日で完成できない場合は、対象者・範囲・形式のどれかを削ってください。</p></section>
 
@@ -183,10 +224,7 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
     <p>迷ったら提供物ルートを選び、候補を一つだけ仮決定してください。</p><p>後から変更しても構いません。</p>
   </aside>
 
-  <details class="rlst-sec starter-advanced" open>
-    <summary>発展版</summary>
-    <p>候補5案を、採用・保留・却下に分け、判断理由を一言ずつ残してください。</p>
-  </details>
+  <details class="rlst-sec starter-advanced" open><summary>発展版</summary><p>候補5案を、採用・保留・却下に分け、判断理由を一言ずつ残してください。</p></details>
 
   <section class="rlst-sec starter-complete">
     <h2>完了条件</h2>
@@ -199,8 +237,8 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
       <span class="rlst-status">現在の状態：未記録</span>
       <p class="rlbl">記録する内容</p>
       <ul class="fields"><li>選択ルート</li><li>成果物候補5つ</li><li>採用成果物</li><li>採用理由</li><li>不安点</li><li>実践時間</li></ul>
-      <span class="rlst-disabled-cta" role="link" aria-disabled="true" data-record-status="未記録">実践記録フォームは準備中です</span>
-      <p class="rtime">所要時間：約3分</p>
+      <a class="rlst-cta starter-button starter-button--primary" href="https://docs.google.com/spreadsheets/d/1-JdXWGzvPZ8jKqZBC8ZKX6u6rPU0f5t6nR8hDezBEWg/copy" rel="nofollow" data-record-status="未記録">自分の記録シートに、今日の分を追記する（まだコピーしていない場合はこちらから作成）</a>
+      <p class="rtime">所要時間：約8分</p>
     </div>
   </section>
 
@@ -208,6 +246,5 @@ html, body { margin: 0; padding: 0; background: #F5F7FA; }
     <p class="lbl">次Day案内</p>
     <p><strong>Day4｜助ける相手と小さな価値を決める</strong></p>
     <p>明日は、成果物を誰のどんな困りごとに役立てるかを一文にします。</p>
-    <p class="line">次の案内は原則、翌朝LINEで届きます。</p>
   </footer>
 </div><script>(function(){function r(f){if(document.readyState!=='loading'){f();}else{document.addEventListener('DOMContentLoaded',f);}}r(function(){var root=document.querySelector('.rlst');if(root)root.classList.add('rlst-has-js');var tg=document.getElementById('rlst-toggle'),pp=document.getElementById('rlst-prompt');if(tg&&pp){tg.addEventListener('click',function(){var col=pp.getAttribute('data-collapsed')==='true';pp.setAttribute('data-collapsed',col?'false':'true');tg.setAttribute('aria-expanded',col?'true':'false');tg.textContent=col?'プロンプトを閉じる':'プロンプト全文を見る';});}var b=document.getElementById('rlst-copy'),s=document.getElementById('rlst-prompt-text'),live=document.getElementById('rlst-copy-live');if(!b||!s)return;var lbl=b.textContent;function ok(){b.classList.add('done');b.textContent='コピーしました';if(live)live.textContent='プロンプトをコピーしました';setTimeout(function(){b.classList.remove('done');b.textContent=lbl;if(live)live.textContent='';},2000);}function fb(t){var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.position='fixed';x.style.left='-9999px';document.body.appendChild(x);x.focus();x.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(x);}b.addEventListener('click',function(){var t=s.textContent;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}});});})();</script></body></html>
